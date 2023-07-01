@@ -13,7 +13,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onUpdated } from 'vue'
 import { useTaskStore } from "../stores/task";
 import { useRouter } from 'vue-router';
 import Nav from '../components/Nav.vue';
@@ -25,12 +25,17 @@ const taskStore = useTaskStore();
 // Variable para guardar las tareas de supabase
 const tasks = ref([]);
 
+
 // Creamos una función que conecte a la store para conseguir las tareas de supabase
 const getTasks = async() => {
   tasks.value = await taskStore.fetchTasks();
 };
 
 getTasks();
+
+onUpdated(() => {
+    getTasks();
+})
 
 </script>
 

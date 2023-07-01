@@ -1,12 +1,13 @@
 <template>
 <div class="container">
     <h3>{{task.title}}</h3>
+    <h3>{{ task.description }}</h3>
     <button @click="deleteTask">Delete {{task.title}}</button>
 </div>
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, onUpdated } from 'vue';
 import { useTaskStore } from '../stores/task';
 import { supabase } from '../supabase';
 
@@ -20,6 +21,10 @@ const props = defineProps({
 const deleteTask = async() => {
     await taskStore.deleteTask(props.task.id);
 };
+
+onUpdated(() => {
+    taskStore.fetchTasks()
+})
 
 </script>
 
