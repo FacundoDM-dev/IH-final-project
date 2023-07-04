@@ -32,11 +32,6 @@ const deleteTask = async () => {
   await taskStore.deleteTask(props.task.id);
 };
 
-// onUpdate monitorea la funcion fetchTask llamada de la store task.js manteniendola actualizada constantemente la peticion que hacer dicha funcion, que es la de leer la tabla donde estoy almacenando los datos.
-onUpdated(() => {
-  taskStore.fetchTasks();
-});
-
 // variable inputUpdate la utilizo en false para luego utilizarla en el dom para mantener ocultos los inputs para hacer un update
 const inputUpdate = ref(false);
 
