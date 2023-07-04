@@ -1,31 +1,56 @@
 <template>
-<div class="container">
-    <h3>{{task.title}}</h3>
+  <div class="container">
+    <h3>{{ task.title }}</h3>
     <h3>{{ task.description }}</h3>
-    <button @click="deleteTask">Delete {{task.title}}</button>
-</div>
+    <button @click="deleteTask">Delete {{ task.title }}</button>
+    <button @click="UpdateToggle">Update {{ task.title }}</button>
+    <div v-if="inputUpdate">
+      <input type="text" v-model="name" />
+      <input type="text" v-model="description" />
+      <button @click="updateTask">Update {{ task.title }}</button>
+    </div>
+  </div>
 </template>
 
 <script setup>
-import { ref, onUpdated } from 'vue';
-import { useTaskStore } from '../stores/task';
-import { supabase } from '../supabase';
+import { ref, onUpdated } from "vue";
+import { useTaskStore } from "../stores/task";
+import { supabase } from "../supabase";
 
 const taskStore = useTaskStore();
 
+const name = ref("");
+
+const description = ref("");
+
 const props = defineProps({
-    task: Object,
+  task: Object,
 });
 
 // Función para borrar la tarea a través de la store. El problema que tendremos aquí (y en NewTask.vue) es que cuando modifiquemos la base de datos los cambios no se verán reflejados en el v-for de Home.vue porque no estamos modificando la variable tasks guardada en Home. Usad el emit para cambiar esto y evitar ningún page refresh.
-const deleteTask = async() => {
-    await taskStore.deleteTask(props.task.id);
+const deleteTask = async () => {
+  await taskStore.deleteTask(props.task.id);
 };
 
+// onUpdate monitorea la funcion fetchTask llamada de la store task.js manteniendola actualizada constantemente la peticion que hacer dicha funcion, que es la de leer la tabla donde estoy almacenando los datos.
 onUpdated(() => {
-    taskStore.fetchTasks()
-})
+  taskStore.fetchTasks();
+});
 
+// variable inputUpdate la utilizo en false para luego utilizarla en el dom para mantener ocultos los inputs para hacer un update
+const inputUpdate = ref(false);
+
+// funcion basica para hacer un toggle a traves de un boton @click para cambiar la variable inputUpdate de false a true y con esto dejar ver en el DOM dichos inputs y el boton para hacerel update
+const UpdateToggle = () => {
+  inputUpdate.value = !inputUpdate.value;
+};
+
+// funcion que llama a funcion de la store task.js que se encarga de hacer una actualizacion de los datos de la tarea.
+const updateTask = () => {
+  taskStore.updateTask(props.task.id, name.value, description.value);
+  name.value = "";
+  description.value = "";
+};
 </script>
 
 <style></style>

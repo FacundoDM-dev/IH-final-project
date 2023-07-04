@@ -18,7 +18,7 @@
     <div>
       <ul>
         <li class="log-out-welcome">
-          <p>Welcome, user</p>
+          <p>Welcome, {{userEmail}}</p>
         </li>
         <li>
           <button @click="signOut" class="button">Log out</button>
@@ -37,9 +37,11 @@ import { ref } from 'vue';
 
 //constant to save a variable that will hold the use router method
 const route = "/";
+
 const buttonText = "Todo app";
 
 // constant to save a variable that will get the user from store with a computed function imported from vue
+
 // const getUser = computed(() => useUserStore().user);
 const getUser = useUserStore().user;
 
@@ -51,6 +53,10 @@ const redirect = useRouter();
 
 const signOut = async () => {
   try{
+
+    await useUserStore().signOut();
+    redirect.push({ path: "/auth/login" });
+  
     // call the user store and send the users info to backend to signOut
     // then redirect user to the homeView
   } catch (error) {}

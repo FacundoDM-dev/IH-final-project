@@ -33,5 +33,22 @@ export const useTaskStore = defineStore("tasks", () => {
       id: id,
     });
   };
-  return { tasksArr, fetchTasks, addTask, deleteTask };
+  
+ // actualizar tareas de supabase
+  const updateTask = async (id, title, description) => {
+    const { data, error } = await supabase
+      .from("tasks")
+      .update([
+        {
+          user_id: useUserStore().user.id,
+          title: title,
+          is_complete: false,
+          description: description,
+        },
+      ])
+      .eq("id", id);
+  };
+
+ 
+  return { tasksArr, fetchTasks, addTask, deleteTask, updateTask };
 });
