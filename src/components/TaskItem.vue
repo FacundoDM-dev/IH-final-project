@@ -1,19 +1,23 @@
 <template>
-  <div class="container">
-    <h3>{{ task.title }}</h3>
-    <h3>{{ task.description }}</h3>
-    <button @click="deleteTask">Delete {{ task.title }}</button>
-    <button @click="UpdateToggle">Update {{ task.title }}</button>
+  <div class="">
+    <h3 :class="{ taskComplete: task.is_complete }">{{ task.title }}</h3>
+    <h3 :class="{ taskComplete: task.is_complete }">
+      {{ task.description }}
+    </h3>
+
+    <button @click="deleteTask">Delete</button>
+    <button @click="toggleComplete">Complete</button>
+    <button @click="updateToggle">Edit</button>
     <div v-if="inputUpdate">
       <input type="text" v-model="name" />
       <input type="text" v-model="description" />
-      <button @click="updateTask">Update {{ task.title }}</button>
+      <button @click="updateTask">Update</button>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, onUpdated } from "vue";
+import { ref, onUpdated, watch } from "vue";
 import { useTaskStore } from "../stores/task";
 import { supabase } from "../supabase";
 
@@ -36,7 +40,7 @@ const deleteTask = async () => {
 const inputUpdate = ref(false);
 
 // funcion basica para hacer un toggle a traves de un boton @click para cambiar la variable inputUpdate de false a true y con esto dejar ver en el DOM dichos inputs y el boton para hacerel update
-const UpdateToggle = () => {
+const updateToggle = () => {
   inputUpdate.value = !inputUpdate.value;
 };
 
@@ -45,10 +49,20 @@ const updateTask = () => {
   taskStore.updateTask(props.task.id, name.value, description.value);
   name.value = "";
   description.value = "";
+  updateToggle();
+};
+
+const toggleComplete = () => {
+  props.task.is_complete = !props.task.is_complete;
+  taskStore.completeTask(props.task.id, props.task.is_complete);
 };
 </script>
 
-<style></style>
+<style>
+.taskComplete {
+  text-decoration: line-through;
+}
+</style>
 
 <!--
 **Hints**

@@ -18,8 +18,8 @@ export const useUserStore = defineStore("user", {
         .match({ user_id: this.user.id });
 
         if (profile) this.profile = profile[0];
-        // console.log('user in store: ', this.user);
-        // console.log('profile in store: ', this.profile);
+        console.log('user in store: ', this.user);
+        console.log('profile in store: ', this.profile);
       }
     },
 
