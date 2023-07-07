@@ -21,11 +21,11 @@ import TaskItem from '../components/TaskItem.vue';
 const taskStore = useTaskStore();
 
 const tasks = computed(() => taskStore.tasksArr);
-console.log("taskComputed:", tasks.value);
+// console.log("taskComputed:", tasks.value);
 
 onMounted(async () => {
   await taskStore.fetchTasks();
-  console.log("taskOnmouted:", tasks.value);
+  // console.log("taskOnmouted:", tasks.value);
 });
 
 

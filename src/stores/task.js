@@ -14,7 +14,7 @@ export const useTaskStore = defineStore("tasks", () => {
       .select("*")
       .order("id", { ascending: false });
     tasksArr.value = tasks;
-    console.log(tasksArr.value);
+    // console.log(tasksArr.value);
   };
 
   // añadir tareas de supabase
