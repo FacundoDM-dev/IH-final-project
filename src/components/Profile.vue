@@ -1,7 +1,8 @@
 <template>
   <div class="container">
     <div class="row">
-      <form class="col-2" action="">
+      <button @click="editToggleProfile">Edit Profile</button>
+      <form v-if="inputUpdate" class="col-2" action="">
         <label for="">Full name</label>
         <input
           v-model="profile.full_name"
@@ -10,7 +11,7 @@
         />
 
         <label for="">Biography</label>
-        <input v-model="profile.bio" placeholder="Biography" type="text" />
+        <textarea  rows="10" cols="50" v-model="profile.bio" placeholder="Biography" type="text-area"></textarea>
 
         <label for="">Website</label>
         <input v-model="profile.website" placeholder="Website" type="text" />
@@ -18,7 +19,9 @@
         <label for="">Location</label>
         <input v-model="profile.location" placeholder="Location" type="text" />
 
-        <button type="button" @click.prevent="updateProfile">Actualizar perfil</button>
+        <button type="button" @click.prevent="updateProfile">
+          Actualizar perfil
+        </button>
       </form>
     </div>
   </div>
@@ -31,9 +34,11 @@ import { supabase } from "../supabase";
 
 const userStore = useUserStore();
 
-const test = () => {
+const inputUpdate = ref(false);
 
-}
+const editToggleProfile = () => {
+  inputUpdate.value = !inputUpdate.value;
+};
 
 const profile = computed(() => (userStore.profile ? userStore.profile : {}));
 
@@ -43,18 +48,18 @@ const updateProfile = async () => {
     bio: profile.value.bio,
     location: profile.value.location,
     website: profile.value.website,
-};
-console.log(updatedProfile);
+  };
+  console.log(updatedProfile);
   const { data, error } = await supabase
     .from("profiles")
     .update(updatedProfile)
     .eq("user_id", supabase.auth.user().id);
-
-    if (error) {
-        console.error(error);
-      } else {
-        console.log("Perfil actualizado correctamente");
-      }
+    editToggleProfile()
+  if (error) {
+    console.error(error);
+  } else {
+    console.log("Perfil actualizado correctamente");
+  }
 };
 
 onMounted(async () => {
@@ -62,4 +67,6 @@ onMounted(async () => {
 });
 </script>
 
-<style scoped></style>
+<style scoped>
+
+</style>
