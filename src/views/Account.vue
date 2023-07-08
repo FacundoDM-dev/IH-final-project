@@ -1,10 +1,12 @@
 <template>
   <Nav />
-  <h1>Name: {{username}}</h1>
-  <h1>Website: <a target="_blank" :href="website">{{website}}</a></h1>
-  <h1>Location: {{location}}</h1>
-  <h1>Byography: {{bio}}</h1>
-  <img :src="avatar_url" v-if="avatar_url" alt="Profile picture">
+  <h1>Name: {{ username }}</h1>
+  <h1>
+    Website: <a target="_blank" :href="website">{{ website }}</a>
+  </h1>
+  <h1>Location: {{ location }}</h1>
+  <h1>Byography: {{ bio }}</h1>
+  <img :src="avatar_url" v-if="avatar_url" alt="Profile picture" />
   <input @change="fileManager" type="file" />
   <button @click="uploadFile">Upload File</button>
 
@@ -23,6 +25,7 @@ import Profile from "../components/Profile.vue";
 const file = ref();
 const fileUrl = ref();
 
+
 const fileManager = (event) => {
   file.value = event.target.files[0];
   // console.log(event);
@@ -39,7 +42,28 @@ const hundleUpdateProfile = (updatedProfileData) => {
 
 const uploadFile = async () => {
   if (!file.value) return;
-  const filePath = `profiles/${file.value.name}`;
+  
+  const { data } = await supabase
+        .from('profiles')
+        .select("avatar_url")
+        .eq("user_id", supabase.auth.user().id);
+
+  const deleteUrl = data[0].avatar_url
+  // console.log(deleteUrl);
+  const { error: urlDeleteError } = await supabase.storage
+    .from("profile-img")
+    .remove([deleteUrl]);
+
+  if (urlDeleteError) {
+    console.error("Error deleting file:", urlDeleteError);
+    return;
+  }
+  console.log("File succesfully upload.");
+
+
+
+  const timestamp = Date.now();
+  const filePath = `profiles/${timestamp}-${file.value.name}`;
   const { error: uploadError } = await supabase.storage
     .from("profile-img")
     .upload(filePath, file.value);
@@ -52,7 +76,7 @@ const uploadFile = async () => {
   const { data: urlData, error: urlError } = await supabase.storage
     .from("profile-img")
     .getPublicUrl(filePath);
-   console.log(urlData);
+  console.log(urlData);
   if (urlError) {
     console.error("Error getting public URL:", urlError);
     return;
@@ -69,11 +93,11 @@ const uploadFile = async () => {
   if (updateError) {
     console.error("Error updating profile:", updateError);
     return;
+  }
+  console.log("Profile successfully updated.");
 
-  } console.log("Profile successfully updated.");
-  
   await userStore.fetchUser();
-}
+};
 
 const userStore = useUserStore();
 
@@ -94,14 +118,14 @@ async function getProfile() {
 }
 
 watch(
-  () => userStore.profile, 
+  () => userStore.profile,
   (updatedProfileData) => {
     // username.value = updatedProfileData.full_name;
     // website.value = updatedProfileData.website;
     // location.value = updatedProfileData.location;
     // bio.value = updatedProfileData.bio;
     avatar_url.value = updatedProfileData.avatar_url;
-  }, 
+  },
   { deep: true }
 );
 
