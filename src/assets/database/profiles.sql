@@ -4,11 +4,11 @@ CREATE TABLE profiles (
   username TEXT,
   full_name TEXT,
   bio TEXT,
+  avatar_url TEXT,
   location TEXT,
   website TEXT,
   created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL ,
   updated_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL,
-  FOREIGN KEY (username) REFERENCES auth.users
 );
 alter table profiles enable row level security;
 create policy "Individuals can create profiles." on profiles for

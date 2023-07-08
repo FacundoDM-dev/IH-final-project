@@ -8,7 +8,7 @@
   <input @change="fileManager" type="file" />
   <button @click="uploadFile">Upload File</button>
 
-  <Profile />
+  <Profile @updateProfileEmit="hundleUpdateProfile" />
 </template>
 
 <script setup>
@@ -26,7 +26,15 @@ const fileUrl = ref();
 const fileManager = (event) => {
   file.value = event.target.files[0];
   // console.log(event);
-  console.log(file.value);
+  // console.log(file.value);
+};
+
+const hundleUpdateProfile = (updatedProfileData) => {
+  username.value = updatedProfileData.full_name;
+  website.value = updatedProfileData.website;
+  location.value = updatedProfileData.location;
+  bio.value = updatedProfileData.bio;
+  avatar_url.value = updatedProfileData.avatar_url;
 };
 
 const uploadFile = async () => {
@@ -51,7 +59,7 @@ const uploadFile = async () => {
   }
 
   fileUrl.value = urlData.publicURL;
- console.log(fileUrl.value);
+  console.log(fileUrl.value);
 
   const { error: updateError } = await supabase
     .from("profiles")
@@ -64,7 +72,7 @@ const uploadFile = async () => {
 
   } console.log("Profile successfully updated.");
   
-  await userStore.fetchUser()
+  await userStore.fetchUser();
 }
 
 const userStore = useUserStore();
@@ -87,12 +95,12 @@ async function getProfile() {
 
 watch(
   () => userStore.profile, 
-  (newProfile) => {
-    // username.value = newProfile.full_name;
-    // website.value = newProfile.website;
-    // location.value = newProfile.location;
-    // bio.value = newProfile.bio;
-    avatar_url.value = newProfile.avatar_url;
+  (updatedProfileData) => {
+    // username.value = updatedProfileData.full_name;
+    // website.value = updatedProfileData.website;
+    // location.value = updatedProfileData.location;
+    // bio.value = updatedProfileData.bio;
+    avatar_url.value = updatedProfileData.avatar_url;
   }, 
   { deep: true }
 );

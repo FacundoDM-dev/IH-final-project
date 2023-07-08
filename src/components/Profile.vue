@@ -11,7 +11,13 @@
         />
 
         <label for="">Biography</label>
-        <textarea  rows="10" cols="50" v-model="profile.bio" placeholder="Biography" type="text-area"></textarea>
+        <textarea
+          rows="10"
+          cols="50"
+          v-model="profile.bio"
+          placeholder="Biography"
+          type="text-area"
+        ></textarea>
 
         <label for="">Website</label>
         <input v-model="profile.website" placeholder="Website" type="text" />
@@ -19,7 +25,7 @@
         <label for="">Location</label>
         <input v-model="profile.location" placeholder="Location" type="text" />
 
-        <button type="button" @click.prevent="updateProfile">
+        <button type="button" @click="updateProfile">
           Actualizar perfil
         </button>
       </form>
@@ -34,6 +40,19 @@ import { supabase } from "../supabase";
 
 const userStore = useUserStore();
 
+const emit = defineEmits(["updateProfileEmit"])
+
+const props = defineProps({
+  profile: {
+    type: Object,
+  },
+  inputUpdate: {
+    type: Boolean,
+  },
+});
+
+//para el padre
+
 const inputUpdate = ref(false);
 
 const editToggleProfile = () => {
@@ -43,24 +62,26 @@ const editToggleProfile = () => {
 const profile = computed(() => (userStore.profile ? userStore.profile : {}));
 
 const updateProfile = async () => {
-  const updatedProfile = {
+  const updatedProfileData = {
     full_name: profile.value.full_name,
     bio: profile.value.bio,
     location: profile.value.location,
     website: profile.value.website,
   };
-  console.log(updatedProfile);
+  console.log(updatedProfileData);
   const { data, error } = await supabase
     .from("profiles")
-    .update(updatedProfile)
+    .update(updatedProfileData)
     .eq("user_id", supabase.auth.user().id);
     editToggleProfile()
   if (error) {
     console.error(error);
   } else {
     console.log("Perfil actualizado correctamente");
+    emit('updateProfileEmit', updatedProfileData)
+
   }
-  
+
 };
 
 onMounted(async () => {
@@ -68,6 +89,4 @@ onMounted(async () => {
 });
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
