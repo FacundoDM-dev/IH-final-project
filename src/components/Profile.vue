@@ -60,6 +60,7 @@ const updateProfile = async () => {
   } else {
     console.log("Perfil actualizado correctamente");
   }
+  
 };
 
 onMounted(async () => {
