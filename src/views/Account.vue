@@ -6,7 +6,7 @@
   </h1>
   <h1>Location: {{ location }}</h1>
   <h1>Byography: {{ bio }}</h1>
-  <img :src="avatar_url" v-if="avatar_url" alt="Profile picture" />
+  <img class="avatar" :src="avatar_url" v-if="avatar_url" alt="Profile picture" />
   <input @change="fileManager" type="file" />
   <button @click="uploadFile">Upload File</button>
 
@@ -147,7 +147,7 @@ onMounted(() => {
 </script>
 
 <style>
-img {
+.avatar {
   width: 200px;
   border-radius: 50%;
 }

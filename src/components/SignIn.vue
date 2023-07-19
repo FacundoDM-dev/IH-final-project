@@ -1,59 +1,70 @@
 <!-- COMPONENTE BOILERPLATE -->
- 
-  <template>
 
+<template>
   <div class="container">
-    <h3 class="header-title">Log In to ToDo App</h3>
-    
-    <form @submit.prevent="signIn" class="form-sign-in">
-      <div class="form">
-        <div class="form-input">
-          <label class="input-field-label">E-mail</label>
-          <input
-            type="email"
-            class="input-field"
-            placeholder="example@gmail.com"
-            id="email"
-            v-model="email"
-            required
-          />
-        </div>
-        <div class="form-input">
-          <label class="input-field-label">Password</label>
-          <input
-            type="password"
-            class="input-field"
-            placeholder="**********"
-            id="password"
-            v-model="password"
-            required
-          />
-        </div>
-        <button class="button" type="submit">Sign In</button>
-
+    <div class="row vh-100 justify-content-center align-items-center">
+      <div class="col-auto p-2 text-center">
+        <h4 >Welcome!</h4>
+        <img class="mb-3" src="../../assets/img/POSTASK-LOGO-PARODIA-POST-IT.png" alt="" />
+        <h5>Sing In</h5>
         
+
+        <form @submit.prevent="signIn" class="form-sign-in">
+          <div class="form">
+            <div class="form-input">
+              <!-- <label class="input-field-label">E-mail</label> -->
+              <input
+                type="email"
+                class="input-field w-100 mb-3"
+                placeholder="Email"
+                id="email"
+                v-model="email"
+                required
+              />
+            </div>
+            <div class="form-input">
+              <!-- <label class="input-field-label">Password</label> -->
+              <input
+                type="password"
+                class="password input-field w-100 mb-3"
+                placeholder="Password"
+                id="password"
+                v-model="password"
+                required
+              />
+            </div>
+            <button class="btn btn-success w-100 mb-5" type="submit">
+              Sign In
+            </button>
+          </div>
+        </form>
+
+        <p>
+          Dont have an account?
+          <PersonalRouter
+            :route="route"
+            :buttonText="buttonText"
+            class="sign-up-link"
+          />
+        </p>
       </div>
-    </form>
-
-    <p>Dont have an account? <PersonalRouter :route="route" :buttonText="buttonText" class="sign-up-link"/></p>
+    </div>
   </div>
-
 </template>
 
 <script setup>
 import PersonalRouter from "./PersonalRouter.vue";
 import { useRouter } from "vue-router";
 import { useUserStore } from "../stores/user";
-import { ref, reactive} from "vue"
+import { ref, reactive } from "vue";
 // Route Variables
 const route = "/auth/signup";
 const buttonText = "Sign Up";
 
-
 // variables para conectarme al form (login)
 
-const email = ref("")
-const password = ref("")
+const email = ref("");
+const password = ref("");
 
 // Router to push user once SignedIn to Home
 const redirect = useRouter();
@@ -84,13 +95,14 @@ const signIn = async () => {
   try {
     // escribir comectario, tarea para casa.
     await useUserStore().signIn(email.value, password.value);
-     // redirects user to the homeView
+    // redirects user to the homeView
     redirect.push({ path: "/" });
-
   } catch (error) {
-    alert(error)
+    alert(error);
   }
 };
 </script>
 
-<style></style>
+<style>
+
+</style>

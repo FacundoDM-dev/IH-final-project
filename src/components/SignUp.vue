@@ -1,49 +1,52 @@
 <template>
   <div class="container">
 
-    <div class="header">
+    <div class="row vh-100 justify-content-center align-items-center">
+      <div class=" col-auto p-2 text-center ">
+        <div class="header">
       <div class="header-description">
-        <h3 class="header-title">Register to ToDo App</h3>
-        <p class="header-subtitle">Start organizing your tasks!</p>
+        <h4 >Welcome!</h4>
+        <img class="mb-3" src="../../assets/img/POSTASK-LOGO-PARODIA-POST-IT.png" alt="" />
+        <h5>Sing Up</h5>
       </div>
     </div>
 
     <form @submit.prevent="signUp" class="form-sign-in">
       <div class="form">
         <div class="form-input">
-          <label class="input-field-label">E-mail</label>
+          <!-- <label class="input-field-label">E-mail</label> -->
           <input
             type="email"
-            class="input-field"
-            placeholder="example@gmail.com"
+            class="input-field w-100 mb-3"
+            placeholder="E-mail"
             id="email"
             v-model="email"
             required
           />
         </div>
         <div class="form-input">
-          <label class="input-field-label">Password</label>
+          <!-- <label class="input-field-label">Password</label> -->
           <input
             type="password"
-            class="input-field"
-            placeholder="**********"
+            class="input-field w-100 mb-3"
+            placeholder="Password"
             id="password"
             v-model="password"
             required
           />
         </div>
         <div class="form-input">
-          <label class="input-field-label">Confirm password</label>
+          <!-- <label class="input-field-label">Confirm password</label> -->
           <input
             type="password"
-            class="input-field"
-            placeholder="**********"
+            class="input-field w-100 mb-3"
+            placeholder="Confirm password"
             id="confirmPassword"
             v-model="confirmPassword"
             required
           />
         </div>
-        <button class="button" type="submit">Sign Up</button>
+        <button class="btn btn-success w-100 mb-5" type="submit">Sign Up</button>
         <p>
           Have an account?
           <PersonalRouter
@@ -56,6 +59,8 @@
     </form>
 
     <div v-show="errorMsg">{{errorMsg}}</div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -104,4 +109,5 @@ const signUp = async () => {
 };
 </script>
 
-<style></style>
+<style>
+</style>

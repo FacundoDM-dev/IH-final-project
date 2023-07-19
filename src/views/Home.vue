@@ -1,31 +1,37 @@
 <template>
   <div class="wrapper">
-    <Nav />
-    <div class="content">
-      <p>La fecha actual es: {{ fechaFormateada }}</p>
-      <h3>Your account:</h3>
-      <router-link to="/account">Account</router-link>
+    <NavBar />
+    <div class="p-lg-5">
+      <div class=" d-flex flex-column align-items-center">
+        <div class=" d-flex flex-column align-items-center">
+          <p>La fecha actual es: {{ fechaFormateada }}</p>
+          <h3>Your account:</h3>
+          <router-link to="/account">Account</router-link>
+        </div>
+        <NewTask />
+      </div>
+      <h1 class="text-center mt-5">Tasks:</h1>
+      <div class="d-flex flex-wrap justify-content-around gap-3">
+        <TaskItem class="task-item" v-for="task in tasks" :key="task.id" :task="task" />
+      </div>
     </div>
-    <NewTask />
-    <h1>Tasks:</h1>
-    <TaskItem v-for="task in tasks" :key="task.id" :task="task" />
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted, computed } from 'vue';
+import { ref, onMounted, computed } from "vue";
 import { useTaskStore } from "../stores/task";
-import Nav from '../components/Nav.vue';
-import NewTask from '../components/NewTask.vue';
-import TaskItem from '../components/TaskItem.vue';
-import { format } from 'date-fns';
+import NavBar from "../components/Nav.vue";
+import NewTask from "../components/NewTask.vue";
+import TaskItem from "../components/TaskItem.vue";
+import { format } from "date-fns";
 
 const taskStore = useTaskStore();
 
 const tasks = computed(() => taskStore.tasksArr);
 // console.log("taskComputed:", tasks.value);
 
-const fechaFormateada = ref('');
+const fechaFormateada = ref("");
 
 onMounted(async () => {
   await taskStore.fetchTasks();
@@ -39,12 +45,11 @@ onMounted(async () => {
 
   // Asignar la fecha formateada a la variable fechaFormateada
   fechaFormateada.value = formatoFecha;
-  
- 
 });
-
-
 </script>
 
-
-<style></style>
+<style>
+.task-item{
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.07);
+}
+</style>

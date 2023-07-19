@@ -1,16 +1,16 @@
 <template>
     <h1>Add a new Task</h1>
     <div v-if="showErrorMessage">
-        <p class="error-text">{{ errorMessage }}</p>
+        <p class=" text text-danger" :class="{ 'fade-in': showErrorMessage }">{{ errorMessage }}</p>
     </div>
-    <div>
-        <div class="input-field">
-            <input type="text" placeholder="Add a Task Title" v-model="name">
+    <div class="input-container">
+        <div>
+            <input class="input-field-new-task" type="text" placeholder="Add a Task Title" v-model="name">
         </div>
-        <div class="input-field">
-            <input type="text" placeholder="Add a Task Description" v-model="description">
+        <div>
+            <input class="input-field-new-task" type="text" placeholder="Add a Task Description" v-model="description">
         </div>
-        <button @click="addTask" class="button">Add</button>
+        <button @click="addTask" class="button btn btn-primary">Add</button>
     </div>
 </template>
 
@@ -52,5 +52,20 @@ if(name.value.length === 0 || description.value.length === 0){
 
 </script>
 
-<style></style>
+<style>
+
+.fade-in {
+    animation: fade-in 0.5s ease-in;
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+</style>
   

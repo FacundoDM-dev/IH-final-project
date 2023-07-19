@@ -1,17 +1,28 @@
 <template>
-  <div class="">
-    <h3 :class="{ taskComplete: task.is_complete }">{{ task.title }}</h3>
-    <h3 :class="{ taskComplete: task.is_complete }">
-      {{ task.description }}
-    </h3>
-
-    <button @click="deleteTask">Delete</button>
-    <button @click="toggleComplete">Complete</button>
-    <button @click="updateToggle">Edit</button>
-    <div v-if="inputUpdate">
-      <input type="text" v-model="name" />
-      <input type="text" v-model="description" />
-      <button @click="updateTask">Update</button>
+  <div class="card">
+    <div class="card-body">
+      <h3 :class="{ taskComplete: task.is_complete }">{{ task.title }}</h3>
+      <p :class="{ taskComplete: task.is_complete }">
+        {{ task.description }}
+      </p>
+      <div class=" d-flex gap-2 justify-content-center">
+        
+        <button class="btn btn-warning w-100" @click="updateToggle">Edit</button>
+        <button class="btn btn-success w-100" @click="toggleComplete">
+          Complete
+        </button>
+        <button class="btn btn-danger w-100" @click="deleteTask">Delete</button>
+        
+      </div>
+      <div v-if="inputUpdate">
+        <input type="text" v-model="name" placeholder="Update Task Title" />
+        <input
+          type="text"
+          v-model="description"
+          placeholder="Update Task Title"
+        />
+        <button @click="updateTask">Update</button>
+      </div>
     </div>
   </div>
 </template>
@@ -46,7 +57,9 @@ const updateToggle = () => {
 
 // funcion que llama a funcion de la store task.js que se encarga de hacer una actualizacion de los datos de la tarea.
 const updateTask = () => {
-  taskStore.updateTask(props.task.id, name.value, description.value);
+  const titleParam = name.value ? name.value : props.task.title
+  const descriptionParam = description.value ? description.value : props.task.description
+  taskStore.updateTask(props.task.id, titleParam, descriptionParam);
   name.value = "";
   description.value = "";
   updateToggle();
@@ -61,6 +74,9 @@ const toggleComplete = () => {
 <style>
 .taskComplete {
   text-decoration: line-through;
+}
+.card-body {
+  width: 25rem;
 }
 </style>
 

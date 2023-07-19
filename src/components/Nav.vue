@@ -1,31 +1,42 @@
 <template>
-  <nav>
-    <!-- <PersonalRouter :route="route" :buttonText="buttonText" class="logo-link"/> -->
-    <router-link to="/">
-      Home
-    </router-link>
-
-    <ul>
-        <li>
-          <router-link to="/">Task Manager</router-link>
-        </li>
-
-        <li>
-          <router-link to="/account">Your Account</router-link>
-        </li>
-    </ul>
-
-    <div>
-      <ul>
-        <li class="log-out-welcome">
-          <p>Welcome, {{userEmail}}</p>
-        </li>
-        <li>
-          <button @click="signOut" class="button">Log out</button>
-        </li>
-      </ul>
+  <nav class="navbar navbar-expand-lg bg-warning">
+    <div class="container-fluid">
+      <img class="navbar-brand" src="../../assets/img/POSTASK-LOGO-PARODIA-POST-IT.png"/>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <!-- <li class="nav-item">
+            <router-link class="nav-link" to="/"> Home </router-link>
+          </li> -->
+          <li class="nav-item">
+            <router-link class="nav-link" to="/">Task Manager</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link" to="/account"
+              >Your Account</router-link
+            >
+          </li>
+        </ul>
+        <div class="d-flex align-items-center" role="search">
+          <p class="me-2 mb-2 mb-lg-0 ">Welcome, {{ userEmail }}</p>
+          <button @click="signOut" class="btn btn-outline-danger">Log out</button>
+        </div>
+      </div>
     </div>
   </nav>
+
+  
+  <!-- <PersonalRouter :route="route" :buttonText="buttonText" class="logo-link"/> -->
 </template>
 
 <script setup>
@@ -33,7 +44,7 @@
 import { useUserStore } from "../stores/user";
 import { computed } from "vue";
 import { useRouter } from "vue-router";
-import { ref } from 'vue';
+import { ref } from "vue";
 
 //constant to save a variable that will hold the use router method
 const route = "/";
@@ -52,36 +63,16 @@ const userEmail = getUser.email;
 const redirect = useRouter();
 
 const signOut = async () => {
-  try{
-
+  try {
     await useUserStore().signOut();
     redirect.push({ path: "/auth/login" });
-  
+
     // call the user store and send the users info to backend to signOut
     // then redirect user to the homeView
   } catch (error) {}
 };
-
 </script>
 
 <style>
-.navbar-img {
-  width: 90px;
-}
 
-nav {
-  background-color: lightgray;
-  display: flex;
-  width: 100%;
-  justify-content: space-around;
-  align-items: center;
-}
-
-nav ul {
-  list-style: none;
-  padding-inline-start: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 </style>
