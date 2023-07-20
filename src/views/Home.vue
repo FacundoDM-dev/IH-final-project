@@ -4,13 +4,12 @@
     <div class="p-lg-5">
       <div class=" d-flex flex-column align-items-center">
         <div class=" d-flex flex-column align-items-center">
-          <p>La fecha actual es: {{ fechaFormateada }}</p>
-          <h3>Your account:</h3>
-          <router-link to="/account">Account</router-link>
+          <h3>Your <router-link to="/account">Account</router-link> </h3>
+          <p>Today's date is {{ fechaFormateada }}</p>
         </div>
         <NewTask />
       </div>
-      <h1 class="text-center mt-5">Tasks:</h1>
+      <h1 class="text-center mt-5 mb-4">Tasks:</h1>
       <div class="d-flex flex-wrap justify-content-around gap-3">
         <TaskItem class="task-item" v-for="task in tasks" :key="task.id" :task="task" />
       </div>

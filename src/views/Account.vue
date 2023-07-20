@@ -1,30 +1,42 @@
 <template>
-  <Nav />
-  <h1>Name: {{ username }}</h1>
-  <h1>
-    Website: <a target="_blank" :href="website">{{ website }}</a>
-  </h1>
-  <h1>Location: {{ location }}</h1>
-  <h1>Byography: {{ bio }}</h1>
-  <img class="avatar" :src="avatar_url" v-if="avatar_url" alt="Profile picture" />
-  <input @change="fileManager" type="file" />
-  <button @click="uploadFile">Upload File</button>
+  <NavBar />
+  <div
+    class="mt-5 d-flex justify-content-center flex-column align-items-center"
+  >
+    <img
+      class="avatar"
+      :src="avatar_url"
+      v-if="avatar_url"
+      alt="Profile picture"
+    />
+    <div>
+      <input @change="fileManager" type="file" />
+      <button @click="uploadFile">Upload File</button>
+    </div>
 
-  <Profile @updateProfileEmit="hundleUpdateProfile" />
+    <div class="mt-5 mb-5 text-center">
+      <h5>Name: {{ username }}</h5>
+      <h5>
+        Website: <a target="_blank" :href="website">{{ website }}</a>
+      </h5>
+      <h5>Location: {{ location }}</h5>
+      <h5>Byography: {{ bio }}</h5>
+    </div>
+    <Profile @updateProfileEmit="hundleUpdateProfile" />
+  </div>
 </template>
 
 <script setup>
 import { supabase } from "../supabase";
-import { onMounted, ref, toRefs, watch } from "vue";
+import { onMounted, ref, watch } from "vue";
 import { useUserStore } from "../stores/user";
-import Nav from "../components/Nav.vue";
+import NavBar from "../components/Nav.vue";
 import Profile from "../components/Profile.vue";
 
 // variables avatar
 
 const file = ref();
 const fileUrl = ref();
-
 
 const fileManager = (event) => {
   file.value = event.target.files[0];
@@ -42,13 +54,13 @@ const hundleUpdateProfile = (updatedProfileData) => {
 
 const uploadFile = async () => {
   if (!file.value) return;
-  
-  const { data } = await supabase
-        .from('profiles')
-        .select("avatar_url")
-        .eq("user_id", supabase.auth.user().id);
 
-  const deleteUrl = data[0].avatar_url
+  const { data } = await supabase
+    .from("profiles")
+    .select("avatar_url")
+    .eq("user_id", supabase.auth.user().id);
+
+  const deleteUrl = data[0].avatar_url;
   // console.log(deleteUrl);
   const { error: urlDeleteError } = await supabase.storage
     .from("profile-img")
@@ -59,8 +71,6 @@ const uploadFile = async () => {
     return;
   }
   console.log("File succesfully upload.");
-
-
 
   const timestamp = Date.now();
   const filePath = `profiles/${timestamp}-${file.value.name}`;

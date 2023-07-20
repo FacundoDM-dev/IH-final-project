@@ -14,14 +14,14 @@
         <button class="btn btn-danger w-100" @click="deleteTask">Delete</button>
         
       </div>
-      <div v-if="inputUpdate">
-        <input type="text" v-model="name" placeholder="Update Task Title" />
-        <input
-          type="text"
+      <div class="d-flex flex-column gap-3 mt-3" v-if="inputUpdate">
+        <input class="input-field" type="text" v-model="name" placeholder="Update Task Title" />
+        <textarea class="input-field" style="height: 6rem" type="text"
           v-model="description"
-          placeholder="Update Task Title"
-        />
-        <button @click="updateTask">Update</button>
+          placeholder="Update Task Description">
+          
+        </textarea>
+        <button class="button btn btn-primary" @click="updateTask">Update</button>
       </div>
     </div>
   </div>

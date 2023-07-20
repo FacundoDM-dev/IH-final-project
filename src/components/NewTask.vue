@@ -1,5 +1,7 @@
 <template>
-    <h1>Add a new Task</h1>
+    <h1>Add a new Task to organize your life</h1>
+    <h3></h3>
+
     <div v-if="showErrorMessage">
         <p class=" text text-danger" :class="{ 'fade-in': showErrorMessage }">{{ errorMessage }}</p>
     </div>
@@ -8,7 +10,10 @@
             <input class="input-field-new-task" type="text" placeholder="Add a Task Title" v-model="name">
         </div>
         <div>
-            <input class="input-field-new-task" type="text" placeholder="Add a Task Description" v-model="description">
+            <textarea
+            class="input-field-new-task" type="text" placeholder="Add a Task Description" v-model="description" style="height: 10rem;">
+
+            </textarea>
         </div>
         <button @click="addTask" class="button btn btn-primary">Add</button>
     </div>

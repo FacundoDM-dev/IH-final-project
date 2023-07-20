@@ -1,17 +1,17 @@
 <template>
   <div class="container">
-    <div class="row">
-      <button @click="editToggleProfile">Edit Profile</button>
-      <form v-if="inputUpdate" class="col-2" action="">
+    <div class=" d-flex flex-column justify-content-center align-items-center">
+      <button class="button btn btn-warning" @click="editToggleProfile">Edit Profile</button>
+      <form v-if="inputUpdate" class="" action="">
         <label for="">Full name</label>
-        <input
+        <input class="input-field-new-task"
           v-model="profile.full_name"
           placeholder="Full name"
           type="text"
         />
 
         <label for="">Biography</label>
-        <textarea
+        <textarea class="input-field-new-task"
           rows="10"
           cols="50"
           v-model="profile.bio"
@@ -20,12 +20,12 @@
         ></textarea>
 
         <label for="">Website</label>
-        <input v-model="profile.website" placeholder="Website" type="text" />
+        <input class="input-field-new-task" v-model="profile.website" placeholder="Website" type="text" />
 
         <label for="">Location</label>
-        <input v-model="profile.location" placeholder="Location" type="text" />
+        <input class="input-field-new-task" v-model="profile.location" placeholder="Location" type="text" />
 
-        <button type="button" @click="updateProfile">
+        <button class="button btn btn-primary" type="button" @click="updateProfile">
           Actualizar perfil
         </button>
       </form>

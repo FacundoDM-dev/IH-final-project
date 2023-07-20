@@ -29,7 +29,7 @@
         </ul>
         <div class="d-flex align-items-center" role="search">
           <p class="me-2 mb-2 mb-lg-0 ">Welcome, {{ userEmail }}</p>
-          <button @click="signOut" class="btn btn-outline-danger">Log out</button>
+          <button @click="signOut" class="btn btn-danger">Log out</button>
         </div>
       </div>
     </div>
