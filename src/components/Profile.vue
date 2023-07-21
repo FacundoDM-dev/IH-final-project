@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="d-flex flex-column justify-content-center align-items-center gap-4">
-      <button class="button btn btn-warning" @click="editToggleProfile">
+      <button class="button-edit button btn btn-warning" @click="editToggleProfile">
         Edit Profile
       </button>
       <form v-if="inputUpdate" class="d-flex flex-column gap-4" action="">
