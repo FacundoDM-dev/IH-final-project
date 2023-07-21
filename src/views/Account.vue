@@ -3,7 +3,17 @@
   <div
     class="container mt-5 d-flex justify-content-center align-items-center mb-5 gap-5 flex-column"
   >
-    <div>
+  <div>
+    <div
+        v-if="isLoading"
+        class=""
+        style="height: 200px"
+      >
+      <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+      </div>
+
+      <div class="d-flex justify-content-center align-items-center flex-column fade-in" v-else>
+        <div>
       <img
         class="avatar "
         :src="avatar_url"
@@ -28,6 +38,9 @@
     </div>
     <Profile @updateProfileEmit="hundleUpdateProfile" />
   </div>
+      </div>
+  </div>
+    
   <FooterBar />
 </template>
 
@@ -117,7 +130,7 @@ const uploadFile = async () => {
 
 const userStore = useUserStore();
 
-const loading = ref(false);
+const isLoading = ref(true);
 const username = ref(null);
 const website = ref(null);
 const avatar_url = ref(null);
@@ -131,6 +144,10 @@ async function getProfile() {
   location.value = userStore.profile.location;
   bio.value = userStore.profile.bio;
   avatar_url.value = userStore.profile.avatar_url;
+
+  setTimeout(() => {
+    isLoading.value = false;
+  }, 2000);
 }
 
 watch(
@@ -163,8 +180,5 @@ onMounted(() => {
 </script>
 
 <style>
-.avatar {
-  width: 200px;
-  border-radius: 50%;
-}
+
 </style>

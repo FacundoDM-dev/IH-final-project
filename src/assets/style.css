@@ -6,6 +6,7 @@ body {
 }
 
 /* SignIn Component */
+/* SignUp Component */
 
 .input-field {
   border-radius: 5px;
@@ -13,8 +14,6 @@ body {
   height: 3rem;
   padding-left: 20px;
 }
-
-/* SignUp Component */
 
 /* Home view */
 
@@ -53,6 +52,30 @@ nav ul {
   gap: 1rem;
 }
 
+.taskComplete {
+  text-decoration: line-through;
+}
+.card-body {
+  width: 28.8rem;
+}
+
+.add-button{
+  width: 100%;
+}
+
+.fade-in {
+  animation: fade-in 0.5s ease-in;
+}
+
+@keyframes fade-in {
+  0% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 1;
+  }
+}
+
 .input-field-new-task {
   width: 100%;
   border-radius: 5px;
@@ -65,6 +88,87 @@ nav ul {
   width: 40%;
   height: 3rem;
 }
+
+.task-item {
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.07);
+}
+
+.fade-in {
+  animation: fade-in 0.5s ease-in;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.lds-ellipsis {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+  
+}
+
+.lds-ellipsis div {
+  position: absolute;
+  top: 33px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: rgb(247, 207, 87);
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+.lds-ellipsis div:nth-child(1) {
+  left: 8px;
+  animation: lds-ellipsis1 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(2) {
+  left: 8px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(3) {
+  left: 32px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(4) {
+  left: 56px;
+  animation: lds-ellipsis3 0.6s infinite;
+}
+@keyframes lds-ellipsis1 {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes lds-ellipsis3 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@keyframes lds-ellipsis2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(24px, 0);
+  }
+}
+
 /* Account View */
+
+.avatar {
+  width: 200px;
+  border-radius: 50%;
+}
 
 

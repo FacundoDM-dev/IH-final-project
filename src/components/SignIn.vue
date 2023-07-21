@@ -1,7 +1,7 @@
 <!-- COMPONENTE BOILERPLATE -->
 
 <template>
-  <div class="container">
+  <div class="container fade-in">
     <div class="row vh-100 justify-content-center align-items-center">
       <div class="col-auto p-2 text-center">
         <h4 >Welcome!</h4>

@@ -72,12 +72,7 @@ const toggleComplete = () => {
 </script>
 
 <style>
-.taskComplete {
-  text-decoration: line-through;
-}
-.card-body {
-  width: 28.8rem;
-}
+
 </style>
 
 <!--

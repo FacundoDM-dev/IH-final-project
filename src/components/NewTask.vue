@@ -59,22 +59,7 @@ if(name.value.length === 0 || description.value.length === 0){
 
 <style>
 
-.add-button{
-    width: 100%;
-}
 
-.fade-in {
-    animation: fade-in 0.5s ease-in;
-}
-
-@keyframes fade-in {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
 
 </style>
   
