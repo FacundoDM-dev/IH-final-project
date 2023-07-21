@@ -1,31 +1,34 @@
 <template>
   <NavBar />
   <div
-    class="mt-5 d-flex justify-content-center flex-column align-items-center mb-5"
+    class="container mt-5 d-flex justify-content-center align-items-center mb-5 gap-5 flex-column"
   >
-    <img
-      class="avatar"
-      :src="avatar_url"
-      v-if="avatar_url"
-      alt="Profile picture"
-    />
     <div>
-      <input class="form-control" @change="fileManager" type="file" />
-      <button class="button btn btn-primary w-100" @click="uploadFile">Upload File</button>
+      <img
+        class="avatar "
+        :src="avatar_url"
+        v-if="avatar_url"
+        alt="Profile picture"
+      />
+      <div>
+        <input class="form-control" @change="fileManager" type="file" />
+        <button class="button btn btn-primary w-100" @click="uploadFile">
+          Upload File
+        </button>
+      </div>
     </div>
 
-    <div class="mt-5 mb-5 text-center w-25">
+    <div class="mt-5 mb-5 text-center w-50 text-center">
       <h5>Name: {{ username }}</h5>
       <h5>
         Website: <a target="_blank" :href="website">{{ website }}</a>
       </h5>
       <h5>Location: {{ location }}</h5>
-      <h5 class="">Byography: {{ bio }}</h5>
+      <h5 class="">Bio: {{ bio }}</h5>
     </div>
     <Profile @updateProfileEmit="hundleUpdateProfile" />
-    
   </div>
-  <FooterBar/>
+  <FooterBar />
 </template>
 
 <script setup>
