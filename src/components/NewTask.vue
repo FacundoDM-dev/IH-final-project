@@ -15,7 +15,7 @@
 
             </textarea>
         </div>
-        <button @click="addTask" class="button btn btn-primary">Add</button>
+        <button @click="addTask" class="button btn btn-primary add-button">Add</button>
     </div>
 </template>
 
@@ -58,6 +58,10 @@ if(name.value.length === 0 || description.value.length === 0){
 </script>
 
 <style>
+
+.add-button{
+    width: 100%;
+}
 
 .fade-in {
     animation: fade-in 0.5s ease-in;
