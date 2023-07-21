@@ -10,10 +10,11 @@
         <NewTask />
       </div>
       <h1 class="text-center mt-5 mb-4">Tasks:</h1>
-      <div class="d-flex flex-wrap justify-content-around gap-3">
+      <div class="d-flex flex-wrap justify-content-center gap-3">
         <TaskItem class="task-item" v-for="task in tasks" :key="task.id" :task="task" />
       </div>
     </div>
+    <FooterBar/>
   </div>
 </template>
 
@@ -22,6 +23,7 @@ import { ref, onMounted, computed } from "vue";
 import { useTaskStore } from "../stores/task";
 import NavBar from "../components/Nav.vue";
 import NewTask from "../components/NewTask.vue";
+import FooterBar from "../components/Footer.vue";
 import TaskItem from "../components/TaskItem.vue";
 import { format } from "date-fns";
 

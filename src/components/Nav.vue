@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-lg bg-warning">
     <div class="container-fluid">
-      <img class="navbar-brand" src="../../assets/img/POSTASK-LOGO-PARODIA-POST-IT.png"/>
+      <img class="navbar-brand" src="../../assets/img/POSTASK-NAV.png"/>
       <button
         class="navbar-toggler"
         type="button"

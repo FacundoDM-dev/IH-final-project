@@ -76,7 +76,7 @@ const toggleComplete = () => {
   text-decoration: line-through;
 }
 .card-body {
-  width: 25rem;
+  width: 28.8rem;
 }
 </style>
 
