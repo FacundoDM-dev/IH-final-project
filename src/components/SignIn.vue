@@ -6,7 +6,7 @@
       <div class="col-auto p-2 text-center">
         <h4 >Welcome!</h4>
         <img class="mb-3" src="../../assets/img/POSTASK-LOGO-PARODIA-POST-IT.png" alt="" />
-        <h5>Sing In</h5>
+        <h5>Sign In</h5>
         
 
         <form @submit.prevent="signIn" class="form-sign-in">
