@@ -76,6 +76,19 @@ nav ul {
   }
 }
 
+.fade-out {
+  animation: fade-in 0.5s ease-in;
+}
+
+@keyframes fade-out {
+  0% {
+      opacity: 1;
+  }
+  100% {
+      opacity: 1;
+  }
+}
+
 .input-field-new-task {
   width: 100%;
   border-radius: 5px;
@@ -164,6 +177,8 @@ nav ul {
   }
 }
 
+
+
 /* Account View */
 
 .avatar {
@@ -172,3 +187,27 @@ nav ul {
 }
 
 
+@media (max-width: 990px){
+  .input-field-new-task {
+    width: 90%;
+  }
+  .add-button{
+    width: 90%;
+  }
+}
+@media (max-width: 766px){
+  .input-field-new-task {
+    width: 80%;
+  }
+  .add-button{
+    width: 80%;
+  }
+}
+@media (max-width: 576px){
+  .input-field-new-task {
+    width: 70%;
+  }
+  .add-button{
+    width: 70%;
+  }
+}

@@ -1,5 +1,5 @@
 <template>
-  <div class="container fade-in">
+  <div class="container ">
 
     <div class="row vh-100 justify-content-center align-items-center">
       <div class=" col-auto p-2 text-center ">
@@ -9,9 +9,9 @@
         <img class="mb-3" src="../../assets/img/POSTASK-LOGO-PARODIA-POST-IT.png" alt="" />
         <h5>Sign Up</h5>
       </div>
-    </div>
+    </div>  
 
-    <form @submit.prevent="signUp" class="form-sign-in">
+    <form @submit.prevent="signUp" class="form-sign-in fade-in">
       <div class="form">
         <div class="form-input">
           <!-- <label class="input-field-label">E-mail</label> -->
@@ -65,12 +65,12 @@
 </template>
 
 <script setup>
-import { ref, computed } from "vue";
+import { ref } from "vue";
 import PersonalRouter from "./PersonalRouter.vue";
-import { supabase } from "../supabase";
 import { useRouter } from "vue-router";
 import { useUserStore } from "../stores/user";
-import { storeToRefs } from "pinia";
+import Swal from "sweetalert2"
+
 
 // Route Variables
 const route = "/auth/login";
@@ -95,6 +95,7 @@ const signUp = async () => {
       await useUserStore().signUp(email.value, password.value);
       // redirects user to the homeView
       redirect.push({ path: "/auth/login" });
+      Swal.fire('Check your email!')
     } catch (error) {
       // displays error message
       errorMsg.value = error.message;

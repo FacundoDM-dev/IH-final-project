@@ -1,4 +1,5 @@
 <template>
+  
   <div class="wrapper">
     <NavBar />
     <div class="p-lg-5">
@@ -10,14 +11,15 @@
       <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
       </div>
       <div v-else>
+        
         <div class="d-flex flex-column align-items-center fade-in">
-          <div class="d-flex flex-column align-items-center">
+          <div class="text-center">
             <h3>Your <router-link to="/account">Account</router-link></h3>
             <p>Today's date is {{ fechaFormateada }}</p>
           </div>
           <NewTask />
         </div>
-        <h1 class="text-center mt-5 mb-4">Tasks:</h1>
+        <h1 class="text-center mt-5 mb-4 " >Tasks:</h1>
         <div class="d-flex flex-wrap justify-content-center gap-3">
           <TaskItem
             class="task-item fade-in"

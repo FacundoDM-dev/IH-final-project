@@ -14,7 +14,7 @@
         <button class="btn btn-danger w-100" @click="deleteTask">Delete</button>
         
       </div>
-      <div class="d-flex flex-column gap-3 mt-3" v-if="inputUpdate">
+      <div class="d-flex flex-column gap-3 mt-3 fade-in" v-if="inputUpdate">
         <input class="input-field" type="text" v-model="name" placeholder="Update Task Title" />
         <textarea class="input-field" style="height: 6rem" type="text"
           v-model="description"
@@ -28,6 +28,7 @@
 </template>
 
 <script setup>
+import Swal from "sweetalert2"
 import { ref, onUpdated, watch } from "vue";
 import { useTaskStore } from "../stores/task";
 import { supabase } from "../supabase";
@@ -44,7 +45,46 @@ const props = defineProps({
 
 // Función para borrar la tarea a través de la store. El problema que tendremos aquí (y en NewTask.vue) es que cuando modifiquemos la base de datos los cambios no se verán reflejados en el v-for de Home.vue porque no estamos modificando la variable tasks guardada en Home. Usad el emit para cambiar esto y evitar ningún page refresh.
 const deleteTask = async () => {
-  await taskStore.deleteTask(props.task.id);
+
+  const swalWithBootstrapButtons = Swal.mixin({
+  customClass: {
+    confirmButton: 'btn btn-success',
+    cancelButton: 'btn btn-danger'
+  },
+  buttonsStyling: false
+})
+
+swalWithBootstrapButtons.fire({
+  title: 'Are you sure?',
+  text: "You won't be able to revert this!",
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonText: 'Yes, delete it!',
+  cancelButtonText: 'No, cancel!',
+  reverseButtons: true
+}).then((result) => {
+  if (result.isConfirmed) {
+
+    taskStore.deleteTask(props.task.id);
+
+    swalWithBootstrapButtons.fire(
+      'Deleted!',
+      'Your task has been deleted.',
+      'success'
+    )
+  } else if (
+    /* Read more about handling dismissals below */
+    result.dismiss === Swal.DismissReason.cancel
+  ) {
+    swalWithBootstrapButtons.fire(
+      'Cancelled',
+      'Your task is safe :)',
+      'error'
+    )
+  }
+})
+
+  
 };
 
 // variable inputUpdate la utilizo en false para luego utilizarla en el dom para mantener ocultos los inputs para hacer un update
