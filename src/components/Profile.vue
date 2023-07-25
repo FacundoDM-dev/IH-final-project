@@ -77,8 +77,6 @@ const props = defineProps({
   },
 });
 
-//para el padre
-
 const inputUpdate = ref(false);
 
 const editToggleProfile = () => {

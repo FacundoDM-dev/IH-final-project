@@ -78,7 +78,7 @@ nav ul {
   width: 28.8rem;
 }
 
-.add-button{
+.add-button {
   width: 100%;
 }
 
@@ -88,10 +88,10 @@ nav ul {
 
 @keyframes fade-in {
   0% {
-      opacity: 0;
+    opacity: 0;
   }
   100% {
-      opacity: 1;
+    opacity: 1;
   }
 }
 
@@ -101,10 +101,10 @@ nav ul {
 
 @keyframes fade-out {
   0% {
-      opacity: 1;
+    opacity: 1;
   }
   100% {
-      opacity: 1;
+    opacity: 1;
   }
 }
 
@@ -125,13 +125,11 @@ nav ul {
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.07);
 }
 
-
 .lds-ellipsis {
   display: inline-block;
   position: relative;
   width: 80px;
   height: 80px;
-  
 }
 
 .lds-ellipsis div {
@@ -184,8 +182,6 @@ nav ul {
   }
 }
 
-
-
 /* Account View */
 
 .avatar {
@@ -193,16 +189,15 @@ nav ul {
   border-radius: 50%;
 }
 
-.avatar-container{
+.avatar-container {
   background-color: rgb(255, 255, 255);
   padding: 2rem;
   border-radius: 0.5rem;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.048);
   border: 0.5px solid rgba(0, 0, 0, 0.141);
-  
 }
 
-.text-container{
+.text-container {
   background-color: rgb(255, 255, 255);
   padding: 2rem;
   border-radius: 0.5rem;
@@ -211,39 +206,37 @@ nav ul {
   border: 0.5px solid rgba(0, 0, 0, 0.141);
 }
 
-
 /* Media Querys */
 
-@media (max-width: 990px){
+@media (max-width: 990px) {
   .input-field-new-task {
     width: 90%;
   }
-  .add-button{
+  .add-button {
     width: 90%;
   }
 
   .navbar {
     margin-bottom: 20px;
   }
-
 }
-@media (max-width: 766px){
+@media (max-width: 766px) {
   .input-field-new-task {
     width: 80%;
   }
-  .add-button{
+  .add-button {
     width: 80%;
   }
 }
-@media (max-width: 576px){
+@media (max-width: 576px) {
   .input-field-new-task {
     width: 70%;
   }
-  .add-button{
+  .add-button {
     width: 70%;
   }
 
-  .btn-query{
+  .btn-query {
     width: 5rem !important;
   }
 

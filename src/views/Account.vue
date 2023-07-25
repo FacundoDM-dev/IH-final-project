@@ -15,7 +15,7 @@
 
       <div v-else>
         <div
-          class="d-flex justify-content-center align-items-center gap-5 fade-in"
+          class="d-flex justify-content-center align-items-center flex-wrap gap-5 fade-in"
         >
           <div class="avatar-container text-center">
             <img
@@ -36,7 +36,7 @@
             </div>
           </div>
 
-          <div class="text-container  w-50  p-5">
+          <div class="text-container w-50 p-5">
             <h3>Profile:</h3>
             <h5 class="fw-lighter">
               Name:
@@ -57,7 +57,6 @@
               Website:
               <a target="_blank" :href="website">{{ website }}</a>
             </h5>
-
           </div>
         </div>
 
@@ -65,8 +64,9 @@
       </div>
     </div>
   </div>
-
-  <FooterBar />
+  <div v-if="hidden">
+    <FooterBar />
+  </div>
 </template>
 
 <script setup>
@@ -154,8 +154,8 @@ const uploadFile = async () => {
 };
 
 const userStore = useUserStore();
-
 const isLoading = ref(true);
+const hidden = ref(false);
 const username = ref(null);
 const website = ref(null);
 const avatar_url = ref(null);
@@ -172,6 +172,7 @@ async function getProfile() {
 
   setTimeout(() => {
     isLoading.value = false;
+    hidden.value = true;
   }, 2000);
 }
 
@@ -190,18 +191,6 @@ watch(
 onMounted(() => {
   getProfile();
 });
-
-// async function signOut() {
-//   try {
-//     loading.value = true
-//     let { error } = await supabase.auth.signOut()
-//     if (error) throw error
-//   } catch (error) {
-//     alert(error.message)
-//   } finally {
-//     loading.value = false
-//   }
-// }
 </script>
 
 <style></style>

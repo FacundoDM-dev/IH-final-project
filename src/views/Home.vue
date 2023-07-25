@@ -1,15 +1,18 @@
 <template>
-  
   <div class="wrapper">
     <NavBar />
     <div class="p-lg-5">
-
       <div
         v-if="isLoading"
         class="d-flex justify-content-center align-items-center container-ellipsis"
         style="height: 200px"
       >
-      <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+        <div class="lds-ellipsis">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
       </div>
 
       <div v-else>
@@ -20,7 +23,7 @@
           </div>
           <NewTask />
         </div>
-        <h1 class="text-center mt-5 mb-4 " >Tasks:</h1>
+        <h1 class="text-center mt-5 mb-4">Tasks:</h1>
         <div class="d-flex flex-wrap justify-content-center gap-3 mb-5">
           <TaskItem
             class="task-item fade-in"
@@ -30,11 +33,10 @@
           />
         </div>
       </div>
-
     </div>
-   <div>
-    <FooterBar />
-   </div>
+    <div class="fade-in" v-if="hidden">
+      <FooterBar />
+    </div>
   </div>
 </template>
 
@@ -48,12 +50,9 @@ import TaskItem from "../components/TaskItem.vue";
 import { format } from "date-fns";
 
 const taskStore = useTaskStore();
-
 const isLoading = ref(true);
-
+const hidden = ref(false);
 const tasks = computed(() => taskStore.tasksArr);
-// console.log("taskComputed:", tasks.value);
-
 const fechaFormateada = ref("");
 
 onMounted(async () => {
@@ -71,11 +70,9 @@ onMounted(async () => {
 
   setTimeout(() => {
     isLoading.value = false;
+    hidden.value = true;
   }, 2000);
 });
 </script>
 
-<style>
-
-
-</style>
+<style></style>
