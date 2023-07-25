@@ -29,9 +29,9 @@
 
 <script setup>
 import Swal from "sweetalert2"
-import { ref, onUpdated, watch } from "vue";
+import { ref } from "vue";
 import { useTaskStore } from "../stores/task";
-import { supabase } from "../supabase";
+
 
 const taskStore = useTaskStore();
 

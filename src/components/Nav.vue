@@ -28,14 +28,13 @@
           </li>
           <li class="nav-item">
             <router-link class="nav-link" to="/weather"
-              >Weather</router-link
+              >Weather & Time</router-link
             >
           </li>
         </ul>
-        <div class="d-flex align-items-center" role="search">
+        <div class="d-flex align-items-center">
           <p class="me-2 mb-2 mb-lg-0 ">Welcome, {{ userEmail }}</p>
           <button @click="signOut" class="btn btn-danger">Log out</button>
-          
         </div>
       </div>
     </div>

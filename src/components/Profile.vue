@@ -1,10 +1,10 @@
 <template>
-  <div class="container">
+  <div class="container pb-5">
     <div class="d-flex flex-column justify-content-center align-items-center gap-4">
-      <button class="button-edit button btn btn-warning" @click="editToggleProfile">
+      <button class="button-edit button btn btn-warning " @click="editToggleProfile">
         Edit Profile
       </button>
-      <form v-if="inputUpdate" class="d-flex flex-column gap-4" action="">
+      <form v-if="inputUpdate" class="d-flex flex-column gap-4 fade-in" action="">
         <div>
           <label for="">Full name</label>
           <input

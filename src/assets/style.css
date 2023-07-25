@@ -203,6 +203,11 @@ nav ul {
   .add-button{
     width: 90%;
   }
+
+  .navbar {
+    margin-bottom: 20px;
+  }
+
 }
 @media (max-width: 766px){
   .input-field-new-task {

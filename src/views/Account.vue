@@ -14,31 +14,31 @@
       </div>
 
       <div
-        class="d-flex justify-content-center align-items-center flex-column fade-in"
+        class="d-flex justify-content-center align-items-center flex-column text fade-in"
         v-else
       >
-        <div>
+        <div class="text-center">
           <img
-            class="avatar"
+            class="avatar mb-3"
             :src="avatar_url"
             v-if="avatar_url"
             alt="Profile picture"
           />
           <div>
-            <input class="form-control" @change="fileManager" type="file" />
+            <input class="form-control mt-4" @change="fileManager" type="file" />
             <button class="button btn btn-primary w-100" @click="uploadFile">
               Upload File
             </button>
           </div>
         </div>
 
-        <div class="mt-5 mb-5 text-center w-50 text-center">
+        <div class="text-center w-50 text-center p-5">
           <h5>Name: {{ username }}</h5>
           <h5>
             Website: <a target="_blank" :href="website">{{ website }}</a>
           </h5>
-          <h5>Location: {{ location }}</h5>
-          <h5 class="">Bio: {{ bio }}</h5>
+          <h5 class="fw-lighter">Location:<h5>{{ location }}</h5></h5>
+          <h5 class="fw-lighter">Bio: <h5>{{ bio }}</h5></h5>
         </div>
         <Profile @updateProfileEmit="hundleUpdateProfile" />
       </div>
