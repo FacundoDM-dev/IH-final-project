@@ -3,15 +3,16 @@
   <div class="wrapper">
     <NavBar />
     <div class="p-lg-5">
+
       <div
         v-if="isLoading"
-        class="d-flex justify-content-center align-items-center"
+        class="d-flex justify-content-center align-items-center container-ellipsis"
         style="height: 200px"
       >
       <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
       </div>
+
       <div v-else>
-        
         <div class="d-flex flex-column align-items-center fade-in">
           <div class="text-center">
             <h3>Your <router-link to="/account">Account</router-link></h3>
@@ -20,7 +21,7 @@
           <NewTask />
         </div>
         <h1 class="text-center mt-5 mb-4 " >Tasks:</h1>
-        <div class="d-flex flex-wrap justify-content-center gap-3">
+        <div class="d-flex flex-wrap justify-content-center gap-3 mb-5">
           <TaskItem
             class="task-item fade-in"
             v-for="task in tasks"
@@ -29,16 +30,19 @@
           />
         </div>
       </div>
+
     </div>
+   <div>
     <FooterBar />
+   </div>
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted, computed } from "vue";
 import { useTaskStore } from "../stores/task";
-import NavBar from "../components/Nav.vue";
 import NewTask from "../components/NewTask.vue";
+import NavBar from "../components/Nav.vue";
 import FooterBar from "../components/Footer.vue";
 import TaskItem from "../components/TaskItem.vue";
 import { format } from "date-fns";

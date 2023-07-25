@@ -7,11 +7,11 @@
       </p>
       <div class=" d-flex gap-2 justify-content-center">
         
-        <button class="btn btn-warning w-100" @click="updateToggle">Edit</button>
-        <button class="btn btn-success w-100" @click="toggleComplete">
+        <button class="btn btn-warning w-100 btn-query" @click="updateToggle">Edit</button>
+        <button class="btn btn-success w-100 btn-query" @click="toggleComplete">
           Complete
         </button>
-        <button class="btn btn-danger w-100" @click="deleteTask">Delete</button>
+        <button class="btn btn-danger w-100 btn-query" @click="deleteTask">Delete</button>
         
       </div>
       <div class="d-flex flex-column gap-3 mt-3 fade-in" v-if="inputUpdate">

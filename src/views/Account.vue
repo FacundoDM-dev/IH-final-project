@@ -3,44 +3,48 @@
   <div
     class="container mt-5 d-flex justify-content-center align-items-center mb-5 gap-5 flex-column"
   >
-  <div>
-    <div
-        v-if="isLoading"
-        class=""
-        style="height: 200px"
+    <div>
+      <div v-if="isLoading" class="" style="height: 200px">
+        <div class="lds-ellipsis">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+
+      <div
+        class="d-flex justify-content-center align-items-center flex-column fade-in"
+        v-else
       >
-      <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
-      </div>
-
-      <div class="d-flex justify-content-center align-items-center flex-column fade-in" v-else>
         <div>
-      <img
-        class="avatar "
-        :src="avatar_url"
-        v-if="avatar_url"
-        alt="Profile picture"
-      />
-      <div>
-        <input class="form-control" @change="fileManager" type="file" />
-        <button class="button btn btn-primary w-100" @click="uploadFile">
-          Upload File
-        </button>
-      </div>
-    </div>
+          <img
+            class="avatar"
+            :src="avatar_url"
+            v-if="avatar_url"
+            alt="Profile picture"
+          />
+          <div>
+            <input class="form-control" @change="fileManager" type="file" />
+            <button class="button btn btn-primary w-100" @click="uploadFile">
+              Upload File
+            </button>
+          </div>
+        </div>
 
-    <div class="mt-5 mb-5 text-center w-50 text-center">
-      <h5>Name: {{ username }}</h5>
-      <h5>
-        Website: <a target="_blank" :href="website">{{ website }}</a>
-      </h5>
-      <h5>Location: {{ location }}</h5>
-      <h5 class="">Bio: {{ bio }}</h5>
-    </div>
-    <Profile @updateProfileEmit="hundleUpdateProfile" />
-  </div>
+        <div class="mt-5 mb-5 text-center w-50 text-center">
+          <h5>Name: {{ username }}</h5>
+          <h5>
+            Website: <a target="_blank" :href="website">{{ website }}</a>
+          </h5>
+          <h5>Location: {{ location }}</h5>
+          <h5 class="">Bio: {{ bio }}</h5>
+        </div>
+        <Profile @updateProfileEmit="hundleUpdateProfile" />
       </div>
+    </div>
   </div>
-    
+
   <FooterBar />
 </template>
 
@@ -179,6 +183,4 @@ onMounted(() => {
 // }
 </script>
 
-<style>
-
-</style>
+<style></style>

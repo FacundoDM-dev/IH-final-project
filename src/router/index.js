@@ -4,7 +4,7 @@ import Home from "../views/Home.vue";
 import Account from "../views/Account.vue"
 import SignIn from "../components/SignIn.vue";
 import SignUp from "../components/SignUp.vue";
-import Test from "@/components/Test.vue"
+import Weather from "../views/Weather.vue"
 const routes = [
   {
     path: "/auth",
@@ -16,7 +16,8 @@ const routes = [
   },
   { path: "/", component: Home },
   { path: "/account", component: Account },
-  { path: "/test", component: Test }
+  { path: "/weather", component: Weather },
+  
 ];
 
 const router = createRouter({

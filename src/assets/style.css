@@ -3,6 +3,24 @@
 body {
   background-image: url(/assets/img/textura-blanca.jpg);
   font-family: "Outfit", sans-serif;
+  min-height: calc(100vh - (100px + 100px));
+}
+
+body::-webkit-scrollbar {
+  width: 8px;
+}
+
+body::-webkit-scrollbar-track {
+  background: #bfc0c787;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #93949987;
+  border-radius: 50px;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background-color: #666a7c87;
 }
 
 /* SignIn Component */
@@ -16,10 +34,6 @@ body {
 }
 
 /* Home view */
-
-.navbar-img {
-  width: 90px;
-}
 
 nav {
   background-color: lightgray;
@@ -35,6 +49,10 @@ nav ul {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.navbar-img {
+  width: 90px;
 }
 
 .navbar-brand {
@@ -55,6 +73,7 @@ nav ul {
 .taskComplete {
   text-decoration: line-through;
 }
+
 .card-body {
   width: 28.8rem;
 }
@@ -106,18 +125,6 @@ nav ul {
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.07);
 }
 
-.fade-in {
-  animation: fade-in 0.5s ease-in;
-}
-
-@keyframes fade-in {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
 
 .lds-ellipsis {
   display: inline-block;
@@ -129,7 +136,7 @@ nav ul {
 
 .lds-ellipsis div {
   position: absolute;
-  top: 33px;
+  top: 50px;
   width: 13px;
   height: 13px;
   border-radius: 50%;
@@ -187,6 +194,8 @@ nav ul {
 }
 
 
+/* Media Querys */
+
 @media (max-width: 990px){
   .input-field-new-task {
     width: 90%;
@@ -209,5 +218,13 @@ nav ul {
   }
   .add-button{
     width: 70%;
+  }
+
+  .btn-query{
+    width: 5rem !important;
+  }
+
+  .card-body {
+    width: 20rem;
   }
 }
