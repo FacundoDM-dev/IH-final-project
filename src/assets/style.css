@@ -189,8 +189,26 @@ nav ul {
 /* Account View */
 
 .avatar {
-  width: 200px;
+  width: 300px;
   border-radius: 50%;
+}
+
+.avatar-container{
+  background-color: rgb(255, 255, 255);
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.048);
+  border: 0.5px solid rgba(0, 0, 0, 0.141);
+  
+}
+
+.text-container{
+  background-color: rgb(255, 255, 255);
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.048);
+  height: 30rem;
+  border: 0.5px solid rgba(0, 0, 0, 0.141);
 }
 
 

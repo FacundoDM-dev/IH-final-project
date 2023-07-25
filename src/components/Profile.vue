@@ -1,10 +1,10 @@
 <template>
   <div class="container pb-5">
     <div class="d-flex flex-column justify-content-center align-items-center gap-4">
-      <button class="button-edit button btn btn-warning " @click="editToggleProfile">
+      <button class="button-edit button btn btn-warning w-100 mt-5" @click="editToggleProfile">
         Edit Profile
       </button>
-      <form v-if="inputUpdate" class="d-flex flex-column gap-4 fade-in" action="">
+      <form v-if="inputUpdate" class="d-flex flex-column gap-4 w-100 fade-in" action="">
         <div>
           <label for="">Full name</label>
           <input
@@ -60,7 +60,7 @@
 </template>
 
 <script setup>
-import { ref, reactive, onMounted, computed } from "vue";
+import { ref, onMounted, computed } from "vue";
 import { useUserStore } from "../stores/user";
 import { supabase } from "../supabase";
 

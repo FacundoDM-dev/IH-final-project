@@ -13,33 +13,54 @@
         </div>
       </div>
 
-      <div
-        class="d-flex justify-content-center align-items-center flex-column text fade-in"
-        v-else
-      >
-        <div class="text-center">
-          <img
-            class="avatar mb-3"
-            :src="avatar_url"
-            v-if="avatar_url"
-            alt="Profile picture"
-          />
-          <div>
-            <input class="form-control mt-4" @change="fileManager" type="file" />
-            <button class="button btn btn-primary w-100" @click="uploadFile">
-              Upload File
-            </button>
+      <div v-else>
+        <div
+          class="d-flex justify-content-center align-items-center gap-5 fade-in"
+        >
+          <div class="avatar-container text-center">
+            <img
+              class="avatar mb-3"
+              :src="avatar_url"
+              v-if="avatar_url"
+              alt="Profile picture"
+            />
+            <div>
+              <input
+                class="form-control mt-4"
+                @change="fileManager"
+                type="file"
+              />
+              <button class="button btn btn-primary w-100" @click="uploadFile">
+                Upload File
+              </button>
+            </div>
+          </div>
+
+          <div class="text-container  w-50  p-5">
+            <h3>Profile:</h3>
+            <h5 class="fw-lighter">
+              Name:
+              <h5>{{ username }}</h5>
+            </h5>
+
+            <h5 class="fw-lighter">
+              Location:
+              <h5>{{ location }}</h5>
+            </h5>
+
+            <h5 class="fw-lighter">
+              Bio:
+              <h5>{{ bio }}</h5>
+            </h5>
+
+            <h5 class="fw-lighter">
+              Website:
+              <a target="_blank" :href="website">{{ website }}</a>
+            </h5>
+
           </div>
         </div>
 
-        <div class="text-center w-50 text-center p-5">
-          <h5>Name: {{ username }}</h5>
-          <h5>
-            Website: <a target="_blank" :href="website">{{ website }}</a>
-          </h5>
-          <h5 class="fw-lighter">Location:<h5>{{ location }}</h5></h5>
-          <h5 class="fw-lighter">Bio: <h5>{{ bio }}</h5></h5>
-        </div>
         <Profile @updateProfileEmit="hundleUpdateProfile" />
       </div>
     </div>
