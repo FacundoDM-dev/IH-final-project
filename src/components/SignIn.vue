@@ -4,10 +4,13 @@
   <div class="container fade-in">
     <div class="row vh-100 justify-content-center align-items-center">
       <div class="col-auto p-2 text-center">
-        <h4 >Welcome!</h4>
-        <img class="mb-3" src="../../assets/img/POSTASK-LOGO-PARODIA-POST-IT.png" alt="" />
+        <h4>Welcome!</h4>
+        <img
+          class="mb-3"
+          src="../../assets/img/POSTASK-LOGO-PARODIA-POST-IT.png"
+          alt=""
+        />
         <h5>Sign In</h5>
-        
 
         <form @submit.prevent="signIn" class="form-sign-in">
           <div class="form">
@@ -22,18 +25,19 @@
                 required
               />
             </div>
-            <div class="form-input">
+            <div class="form-input-password">
               <!-- <label class="input-field-label">Password</label> -->
               <input
-                type="password"
+                :type="passwordType"
                 class="password input-field w-100 mb-3"
                 placeholder="Password"
                 id="password"
                 v-model="password"
                 required
               />
+              <i @click="toggleEye" class="eye" :class="eyeClass"></i>
             </div>
-            <p v-if="hidden" class="fade-in text-danger">The password is not correct. Check it out</p>
+            <p v-if="hidden" class="fade-in text-danger">Something is wrong.</p>
             <button class="btn btn-success w-100 mb-5" type="submit">
               Sign In
             </button>
@@ -70,7 +74,16 @@ const password = ref("");
 // Router to push user once SignedIn to Home
 const redirect = useRouter();
 
-const hidden = ref(false)
+const hidden = ref(false);
+
+const eyeClass = ref("fa-solid fa-eye");
+
+const passwordType = ref("password")
+
+const toggleEye = () => {
+  eyeClass.value = eyeClass.value === "fa-solid fa-eye" ? "fa-solid fa-eye-slash" : "fa-solid fa-eye";
+  passwordType.value = passwordType.value === "password" ? "text" : "password"
+};
 
 // const signUp = async () => {
 //   if (password.value === confirmPassword.value) {
@@ -101,14 +114,12 @@ const signIn = async () => {
     // redirects user to the homeView
     redirect.push({ path: "/" });
   } catch (error) {
-    hidden.value = !hidden.value
+    hidden.value = !hidden.value;
     setTimeout(() => {
-    hidden.value = false  
+      hidden.value = false;
     }, 5000);
   }
 };
 </script>
 
-<style>
-
-</style>
+<style></style>

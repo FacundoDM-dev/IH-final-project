@@ -33,6 +33,17 @@ body::-webkit-scrollbar-thumb:hover {
   padding-left: 20px;
 }
 
+.form-input-password{
+  position: relative;
+}
+
+.eye{
+  position: absolute;
+  top: 28%;
+  right: 4%;
+  cursor: pointer;
+  color: lightgrey;
+}
 /* Home view */
 
 nav {
