@@ -7,7 +7,7 @@
   <br>
 </h1>
 
-<h4 align="center">A task manager desktop app built on top of <a href="https://vuejs.org/" target="_blank">Vuejs</a>.</h4>
+<h4 align="center">Una aplicacion desktop creada con <a href="https://vuejs.org/" target="_blank">Vuejs</a>.</h4>
 
 <p align="center">
   <a href="#about-app">About app</a> •
