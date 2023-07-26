@@ -65,7 +65,7 @@
           </div>
         </form>
 
-        <div v-show="errorMsg">{{ errorMsg }}</div>
+        <div class=" text-danger" v-show="errorMsg">{{ errorMsg }}</div>
       </div>
     </div>
   </div>
@@ -112,7 +112,7 @@ const signUp = async () => {
     }
     return;
   }
-  errorMsg.value = "error";
+  errorMsg.value = "Something is wrong.";
 };
 
 const eyeClass = ref("fa-solid fa-eye");

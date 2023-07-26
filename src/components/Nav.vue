@@ -33,7 +33,7 @@
           </li>
         </ul>
         <div class="d-flex align-items-center">
-          <p class="me-2 mb-2 mb-lg-0">Welcome, {{ userEmail }}</p>
+          <p class="me-2 mb-2 mb-lg-0">Welcome, {{ userName }}</p>
           <button @click="signOut" class="btn btn-danger">Log out</button>
         </div>
       </div>
@@ -56,11 +56,14 @@ const buttonText = "Todo app";
 const getUser = useUserStore().user;
 // constant that calls user email from the useUSerStore
 const userEmail = getUser.email;
+
+const userName = userEmail.split("@")[0];
 // async function that calls the signOut method from the useUserStore and pushes the user back to the Auth view.
 const redirect = useRouter();
 
 const signOut = async () => {
   try {
+    
     await useUserStore().signOut();
     redirect.push({ path: "/auth/login" });
 
