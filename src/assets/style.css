@@ -206,6 +206,19 @@ nav ul {
   border: 0.5px solid rgba(0, 0, 0, 0.141);
 }
 
+/*Weather&Time*/
+.widget-container{
+  margin: 54px 0px 55px 0px;
+}
+
+#ww_4637b5e097394{
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.100);
+}
+
+.watch{
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.100);
+}
 /* Media Querys */
 
 @media (max-width: 990px) {
