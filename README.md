@@ -10,7 +10,7 @@
 <h4 align="center">A task manager desktop app built on top of <a href="https://vuejs.org/" target="_blank">Vuejs</a>.</h4>
 
 <p align="center">
-  <a href="#key-features">Key Features</a> •
+  <a href="#about-app">About app</a> •
   <a href="#how-to-use">How To Use</a> •
   <a href="#download">Download</a> •
   <a href="#credits">Credits</a> •
@@ -23,25 +23,25 @@
 
 ![screenshot](https://res.cloudinary.com/ddcu7zhjo/image/upload/v1690373346/uaoerlnbotvlpkgopa05.gif)
 
-## Key Features
+## About app
 
-* LivePreview - Make changes, See changes
-  - Instantly see what your Markdown documents look like in HTML as you create them.
-* Sync Scrolling
-  - While you type, LivePreview will automatically scroll to the current location you're editing.
-* GitHub Flavored Markdown  
-* Syntax highlighting
-* [KaTeX](https://khan.github.io/KaTeX/) Support
-* Dark/Light mode
-* Toolbar for basic Markdown formatting
-* Supports multiple cursors
-* Save the Markdown preview as PDF
-* Emoji support in preview :tada:
-* App will keep alive in tray for quick usage
-* Full screen mode
-  - Write distraction free.
-* Cross platform
-  - Windows, macOS and Linux ready.
+Pos-Task es una aplicación web single page (SPA) diseñada para hacer que la gestión de tareas sea más sencilla y eficiente. Con una interfaz elegante y fácil de usar, esta app te permitirá organizar tus tareas diarias de manera rápida y eficaz.
+
+Características destacadas:
+
+Crear y editar tareas: Con Pos-Task, puedes agregar fácilmente nuevas tareas a tu lista. Además, si necesitas realizar cambios o agregar más detalles, la función de edición te permite modificar cualquier tarea de forma rápida y sencilla.
+
+Marcar tareas como completadas: A medida que completas tus tareas, Pos-Task te permite marcarlas como "completadas". Esto te permite llevar un registro claro y visual de tus progresos, lo que te motiva a seguir adelante y alcanzar tus objetivos.
+
+Eliminación sencilla de tareas: Si alguna tarea ya no es relevante o está completada, puedes eliminarla de la lista con un solo clic. Pos-Task asegura que tu espacio de trabajo se mantenga limpio y libre de distracciones innecesarias.
+
+Interfaz intuitiva y responsive: La interfaz de Pos-Task ha sido diseñada pensando en la comodidad del usuario. Tanto si accedes desde tu computadora de escritorio como desde tu dispositivo móvil, la app se adapta perfectamente a cualquier pantalla, proporcionando una experiencia fluida y agradable.
+
+Seguridad y privacidad: Pos-Task prioriza tu seguridad y privacidad. Todas tus tareas están protegidas y solo accesibles para ti.
+
+Integración en la nube: Pos-Task ofrece la opción de sincronizar tus tareas con servicios en la nube para que puedas acceder a ellas desde cualquier dispositivo y nunca pierdas tus datos.
+
+Con Pos-Task, olvídate de las listas de tareas desordenadas y el caos de la organización. Simplifica tu vida y logra tus objetivos de manera más efectiva con esta poderosa y versátil app de gestión de tareas. ¡Descárgala ahora y maximiza tu productividad!
 
 ## How To Use
 
