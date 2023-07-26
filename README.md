@@ -39,9 +39,7 @@ Interfaz intuitiva y responsive: La interfaz de Pos-Task ha sido diseñada pensa
 
 Seguridad y privacidad: Pos-Task prioriza tu seguridad y privacidad. Todas tus tareas están protegidas y solo accesibles para ti.
 
-Integración en la nube: Pos-Task ofrece la opción de sincronizar tus tareas con servicios en la nube para que puedas acceder a ellas desde cualquier dispositivo y nunca pierdas tus datos.
-
-Con Pos-Task, olvídate de las listas de tareas desordenadas y el caos de la organización. Simplifica tu vida y logra tus objetivos de manera más efectiva con esta poderosa y versátil app de gestión de tareas. ¡Descárgala ahora y maximiza tu productividad!
+Con Pos-Task, olvídate de las listas de tareas desordenadas y el caos de la organización. Simplifica tu vida y logra tus objetivos de manera más efectiva con esta poderosa y versátil app de gestión de tareas. 
 
 ## How To Use
 
