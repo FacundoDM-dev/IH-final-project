@@ -19,7 +19,7 @@
 </p>
 
 
-<img align="center" src="./assets/img/Post-Task-Google-Chrome-2023-07-26-14-03-56.gif" alt="Pos-Task" width="800">
+<img align="center" src="./assets/img/Post-Task-Google-Chrome-2023-07-26-14-03-56.gif" alt="Pos-Task" width="1000">
 
 ![screenshot](https://res.cloudinary.com/ddcu7zhjo/image/upload/v1690373346/uaoerlnbotvlpkgopa05.gif)
 
