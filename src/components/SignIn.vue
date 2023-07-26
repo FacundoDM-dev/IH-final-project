@@ -33,6 +33,7 @@
                 required
               />
             </div>
+            <p v-if="hidden" class="fade-in text-danger">The password is not correct. Check it out</p>
             <button class="btn btn-success w-100 mb-5" type="submit">
               Sign In
             </button>
@@ -69,6 +70,8 @@ const password = ref("");
 // Router to push user once SignedIn to Home
 const redirect = useRouter();
 
+const hidden = ref(false)
+
 // const signUp = async () => {
 //   if (password.value === confirmPassword.value) {
 //     try {
@@ -98,7 +101,10 @@ const signIn = async () => {
     // redirects user to the homeView
     redirect.push({ path: "/" });
   } catch (error) {
-    alert("hola", error);
+    hidden.value = !hidden.value
+    setTimeout(() => {
+    hidden.value = false  
+    }, 5000);
   }
 };
 </script>
