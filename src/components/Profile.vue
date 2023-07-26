@@ -4,7 +4,7 @@
       <button class="button-edit button btn btn-warning w-100 mt-5" @click="editToggleProfile">
         Edit Profile
       </button>
-      <form v-if="inputUpdate" class="d-flex flex-column gap-4 w-100 fade-in" action="">
+      <form v-if="inputUpdate" class="d-flex flex-column gap-4 w-100 fade-in">
         <div>
           <label for="">Full name</label>
           <input
