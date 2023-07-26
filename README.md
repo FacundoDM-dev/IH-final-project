@@ -48,11 +48,11 @@ Con Pos-Task, olvídate de las listas de tareas desordenadas y el caos de la org
 
 ## Built With
 
-Client: [Vue.js](https://vuejs.org/) y [Vite](https://vitejs.dev/)
-Router: [Vue Router](https://router.vuejs.org/)
-Store: [Pinia](https://pinia.vuejs.org/)
-Database: [Supabase](https://supabase.com/)
-Frontend Toolkit: [Bootstrap](https://getbootstrap.com/)
+- Client: [Vue.js](https://vuejs.org/) y [Vite](https://vitejs.dev/)
+- Router: [Vue Router](https://router.vuejs.org/)
+- Store: [Pinia](https://pinia.vuejs.org/)
+- Database: [Supabase](https://supabase.com/)
+- Frontend Toolkit: [Bootstrap](https://getbootstrap.com/)
 
 
 ## Credits
