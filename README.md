@@ -13,10 +13,6 @@
   <a href="#about-app">About app</a> •
   <a href="#roadmap">Roadmap</a> •
   <a href="#built-with">Built With</a> •
-  <!-- <a href="#download">Download</a> •
-  <a href="#credits">Credits</a> •
-  <a href="#related">Related</a> •
-  <a href="#license">License</a> -->
 </p>
 
 
@@ -44,7 +40,24 @@ Con Pos-Task, olvídate de las listas de tareas desordenadas y el caos de la org
 
 ## Roadmap
 
----------
+Week 1:
+- Estudiar el boiler-plate.
+- Conectar el proyecto a Supabase.
+- Hacer deploy en Vercel.
+- Estudiar documentacion de Supabase (CRUD)
+- Crear las tablas y el storage para la base de datos de app
+- Comenzar con la logica del proyecto en relacion a las operaciones CRUD
+
+Week 2:
+- Continuar con la logica del proyecto en general.
+
+Week 3:
+- Comenzar a estilar usando Bootstrap y un poco de CSS convencional (MediaQuerys).
+
+Week 4:
+- Continuar estilando la app, ultimando detalles.
+- Redactar el ReadMe.
+- Crear presentacion.
 
 ## Built With
 
@@ -55,26 +68,4 @@ Con Pos-Task, olvídate de las listas de tareas desordenadas y el caos de la org
 - Frontend Toolkit: [Bootstrap](https://getbootstrap.com/)
 
 
-## Credits
-
-This software uses the following open source packages:
-
-- [Electron](http://electron.atom.io/)
-- [Node.js](https://nodejs.org/)
-- [Marked - a markdown parser](https://github.com/chjj/marked)
-- [showdown](http://showdownjs.github.io/showdown/)
-- [CodeMirror](http://codemirror.net/)
-- Emojis are taken from [here](https://github.com/arvida/emoji-cheat-sheet.com)
-- [highlight.js](https://highlightjs.org/)
-
-
-## License
-
-MIT
-
----
-
-> [amitmerchant.com](https://www.amitmerchant.com) &nbsp;&middot;&nbsp;
-> GitHub [@amitmerchant1990](https://github.com/amitmerchant1990) &nbsp;&middot;&nbsp;
-> Twitter [@amit_merchant](https://twitter.com/amit_merchant)
 
