@@ -98,7 +98,7 @@ const signIn = async () => {
     // redirects user to the homeView
     redirect.push({ path: "/" });
   } catch (error) {
-    alert(error);
+    alert("hola", error);
   }
 };
 </script>
