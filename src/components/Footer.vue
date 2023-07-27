@@ -9,8 +9,8 @@
       alt=""
     />
     <div class="d-flex">
-      <p class="text-white">© 2023 Pos-Task App.</p>
-      <p class="text-warning">All rights reserved. Built by FDM-dev.</p>
+      <p class="rights-text text-white">© 2023 Pos-Task App.</p>
+      <p class="rights-text text-warning">All rights reserved. Built by FDM-dev.</p>
     </div>
   </div>
 </template>

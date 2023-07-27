@@ -13,8 +13,8 @@
       >
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <div class="collapse navbar-collapse nav-list" id="navbarSupportedContent">
+        <ul class="navbar-nav mb-2 mb-lg-0">
           <!-- <li class="nav-item">
             <router-link class="nav-link" to="/"> Home </router-link>
           </li> -->
@@ -32,7 +32,7 @@
             >
           </li>
         </ul>
-        <div class="d-flex align-items-center">
+        <div class="d-flex">
           <p class="me-2 mb-2 mb-lg-0">Welcome, {{ userName }}</p>
           <button @click="signOut" class="btn btn-danger">Log out</button>
         </div>
