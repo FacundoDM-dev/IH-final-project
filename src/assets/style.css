@@ -202,7 +202,6 @@ body::-webkit-scrollbar-thumb:hover {
   padding: 2rem;
   border-radius: 0.5rem;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.048);
-  height: 30rem;
   border: 0.5px solid rgba(0, 0, 0, 0.141);
 }
 
@@ -222,18 +221,9 @@ body::-webkit-scrollbar-thumb:hover {
 /* Media Querys */
 
 @media (max-width: 990px) {
-  .nav-list{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  .text-container{
+    width: 28rem !important;
   }
-
-  .navbar-nav{
-    align-items: center;
-    justify-content: center;
-  }
-
   .input-field-new-task {
     width: 90%;
   }

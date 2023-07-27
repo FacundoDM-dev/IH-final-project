@@ -54,8 +54,7 @@
             </h5>
 
             <h5 class="fw-lighter">
-              Website:
-              <a target="_blank" :href="website">{{ website }}</a>
+              <a style="text-decoration: none;" target="_blank" :href="website">Check my portfolio</a>
             </h5>
           </div>
         </div>
