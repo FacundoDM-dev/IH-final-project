@@ -39,37 +39,27 @@
       </div>
     </div>
   </nav>
-
-  <!-- <PersonalRouter :route="route" :buttonText="buttonText" class="logo-link"/> -->
 </template>
 
 <script setup>
-// import PersonalRouter from "./PersonalRouter.vue";
 import { useUserStore } from "../stores/user";
 import { useRouter } from "vue-router";
 
-//constant to save a variable that will hold the use router method
-const route = "/";
-const buttonText = "Todo app";
-// constant to save a variable that will get the user from store with a computed function imported from vue
-// const getUser = computed(() => useUserStore().user);
 const getUser = useUserStore().user;
-// constant that calls user email from the useUSerStore
 const userEmail = getUser.email;
-
 const userName = userEmail.split("@")[0];
-// async function that calls the signOut method from the useUserStore and pushes the user back to the Auth view.
 const redirect = useRouter();
 
+// Función asíncrona que llama al método signOut desde useUserStore y empuja al usuario de vuelta a la vista Auth.
 const signOut = async () => {
   try {
-    
+    // llama al useUserStore y envia la informacion del usuario al backend para cerrar sesion
     await useUserStore().signOut();
+    // y despues te redirige a la vista del inicio de sesion
     redirect.push({ path: "/auth/login" });
-
-    // call the user store and send the users info to backend to signOut
-    // then redirect user to the homeView
-  } catch (error) {}
+  } catch (error) {
+    console.log(error);
+  }
 };
 </script>
 

@@ -57,14 +57,10 @@ const fechaFormateada = ref("");
 
 onMounted(async () => {
   await taskStore.fetchTasks();
-  // console.log("taskOnmouted:", tasks.value);
-
   // Obtener la fecha actual
   const fecha = new Date();
-
   // Formatear la fecha en el formato deseado (por ejemplo, "8th July 2023")
   const formatoFecha = format(fecha, "do MMMM yyyy");
-
   // Asignar la fecha formateada a la variable fechaFormateada
   fechaFormateada.value = formatoFecha;
 

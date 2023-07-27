@@ -73,45 +73,22 @@ const password = ref("");
 
 // Router to push user once SignedIn to Home
 const redirect = useRouter();
-
 const hidden = ref(false);
-
 const eyeClass = ref("fa-solid fa-eye");
-
-const passwordType = ref("password")
+const passwordType = ref("password");
 
 const toggleEye = () => {
-  eyeClass.value = eyeClass.value === "fa-solid fa-eye" ? "fa-solid fa-eye-slash" : "fa-solid fa-eye";
-  passwordType.value = passwordType.value === "password" ? "text" : "password"
+  eyeClass.value =
+    eyeClass.value === "fa-solid fa-eye"
+      ? "fa-solid fa-eye-slash"
+      : "fa-solid fa-eye";
+  passwordType.value = passwordType.value === "password" ? "text" : "password";
 };
 
-// const signUp = async () => {
-//   if (password.value === confirmPassword.value) {
-//     try {
-//       // calls the user store and send the users info to backend to logIn
-//       await useUserStore().signUp(email.value, password.value);
-//       // redirects user to the homeView
-//       redirect.push({ path: "/auth/login" });
-//     } catch (error) {
-//       // displays error message
-//       errorMsg.value = error.message;
-//       // hides error message
-//       setTimeout(() => {
-//         errorMsg.value = null;
-//       }, 5000);
-//     }
-//     return;
-//   }
-//   errorMsg.value = "error";
-// };
-
-// Arrow function to Signin user to supaBase
-
+// function to Signin user to supaBase
 const signIn = async () => {
   try {
-    // escribir comectario, tarea para casa.
     await useUserStore().signIn(email.value, password.value);
-    // redirects user to the homeView
     redirect.push({ path: "/" });
   } catch (error) {
     hidden.value = !hidden.value;

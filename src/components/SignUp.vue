@@ -65,7 +65,7 @@
           </div>
         </form>
 
-        <div class=" text-danger" v-show="errorMsg">{{ errorMsg }}</div>
+        <div class="text-danger" v-show="errorMsg">{{ errorMsg }}</div>
       </div>
     </div>
   </div>
@@ -78,34 +78,34 @@ import { useRouter } from "vue-router";
 import { useUserStore } from "../stores/user";
 import Swal from "sweetalert2";
 
-// Route Variables
+// constantes para las rutas
 const route = "/auth/login";
 const buttonText = "Sign In";
 
-// Input Fields
+// constantes para los inputs
 const email = ref("");
 const password = ref("");
 const confirmPassword = ref("");
 
-// Error Message
+// Mensaje de error
 const errorMsg = ref("");
 
-// Router to push user once SignedUp to Log In
+// Ruta para empujar al usuario una vez que se haya registrado para iniciar sesión
 const redirect = useRouter();
 
-// Arrow function to SignUp user to supaBase with a timeOut() method for showing the error
+// función para registrar al usuario en supaBase con un método timeOut () para mostrar el error
 const signUp = async () => {
   if (password.value === confirmPassword.value) {
     try {
-      // calls the user store and send the users info to backend to logIn
+      // llama a la store users y envía la información de los usuarios al backend para iniciar sesión
       await useUserStore().signUp(email.value, password.value);
-      // redirects user to the homeView
+      // redirige al home/signIn
       redirect.push({ path: "/auth/login" });
       Swal.fire("Check your email!");
     } catch (error) {
-      // displays error message
+      // muestra el mensaje de error
       errorMsg.value = error.message;
-      // hides error message
+      // esconde el mensaje de error
       setTimeout(() => {
         errorMsg.value = null;
       }, 5000);
