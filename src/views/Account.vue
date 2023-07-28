@@ -92,7 +92,7 @@ const hundleUpdateProfile = (updatedProfileData) => {
   website.value = updatedProfileData.website;
   location.value = updatedProfileData.location;
   bio.value = updatedProfileData.bio;
-  avatar_url.value = updatedProfileData.avatar_url;
+  // avatar_url.value = updatedProfileData.avatar_url;
 };
 
 const uploadFile = async () => {
