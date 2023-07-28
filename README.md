@@ -67,5 +67,7 @@ Week 4:
 - Database: [Supabase](https://supabase.com/)
 - Frontend Toolkit: [Bootstrap](https://getbootstrap.com/)
 
+## Presentation
 
+- [Canvas POS-TASK](https://www.canva.com/design/DAFp9rkLfyQ/view)
 
