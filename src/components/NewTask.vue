@@ -39,35 +39,36 @@
 import { ref } from "vue";
 import { useTaskStore } from "../stores/task";
 
+// Obtener la instancia de la tienda 'useTaskStore'
 const taskStore = useTaskStore();
 
-// variables para los valores de los inputs
+// Variables reactivas para los valores de los campos de entrada
 const name = ref("");
 const description = ref("");
 
-// constante para guardar una variable que contiene un valor booleano falso inicial para el contenedor de mensaje de error que se muestra condicionalmente dependiendo de si el campo de entrada está vacío
+// Variable reactiva para controlar la visibilidad del mensaje de error
 const showErrorMessage = ref(false);
 
-// const constant to save a variable that holds the value of the error message
+// Variable reactiva para almacenar el mensaje de error
 const errorMessage = ref(null);
 
-// funcion para crear tareas.
+// Función para crear tareas
 const addTask = () => {
-    // Primero comprobamos que ningún campo del input esté vacío y lanzamos el error con un timeout para informar al user.
+  // Primero comprobamos que ningún campo del input esté vacío y lanzamos el error con un timeout para informar al usuario.
   if (name.value.length === 0 || description.value.length === 0) {
-    
     showErrorMessage.value = true;
     errorMessage.value = "The task title or description is empty";
     setTimeout(() => {
       showErrorMessage.value = false;
     }, 5000);
   } else {
-    // Aquí mandamos los valores a la store para crear la nueva tarea.
+    // Si los campos no están vacíos, mandamos los valores a la tienda para crear la nueva tarea.
     taskStore.addTask(name.value, description.value);
-    name.value = "";
-    description.value = "";
+    name.value = ""; // Limpiamos el campo del nombre de la tarea
+    description.value = ""; // Limpiamos el campo de la descripción de la tarea
   }
 };
+
 </script>
 
 <style></style>

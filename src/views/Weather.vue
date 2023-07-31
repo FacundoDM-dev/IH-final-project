@@ -26,7 +26,10 @@
 </template>
 
 <script setup>
+// Importar el componente NavBar desde la ruta "../components/Nav.vue"
 import NavBar from "../components/Nav.vue";
+
+// Importar el componente FooterBar desde la ruta "../components/Footer.vue"
 import FooterBar from "../components/Footer.vue";
 </script>
 

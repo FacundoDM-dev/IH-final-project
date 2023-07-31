@@ -60,14 +60,22 @@
 </template>
 
 <script setup>
-import { ref, onMounted, computed } from "vue";
+// Importar las funciones 'ref', 'onMounted', 'computed' y 'defineProps' de Vue 3 para crear variables reactivas y manejar propiedades
+import { ref, onMounted, computed, defineProps, defineEmits } from "vue";
+
+// Importar la tienda 'useUserStore' para interactuar con los datos del usuario
 import { useUserStore } from "../stores/user";
+
+// Importar la instancia de Supabase para interactuar con la base de datos
 import { supabase } from "../supabase";
 
+// Obtener la instancia de la tienda 'useUserStore'
 const userStore = useUserStore();
 
+// Definir la función 'emit' para manejar las emisiones de eventos
 const emit = defineEmits(["updateProfileEmit"]);
 
+// Definir las propiedades que se reciben de la instancia padre (este componente es un subcomponente)
 const props = defineProps({
   profile: {
     type: Object,
@@ -77,38 +85,52 @@ const props = defineProps({
   },
 });
 
+// Variable reactiva para controlar la visibilidad de los campos de actualización
 const inputUpdate = ref(false);
 
+// Función para alternar la visibilidad de los campos de actualización
 const editToggleProfile = () => {
   inputUpdate.value = !inputUpdate.value;
 };
 
+// Variable reactiva para manejar el perfil del usuario desde la tienda
 const profile = computed(() => (userStore.profile ? userStore.profile : {}));
 
+// Función para actualizar el perfil del usuario en Supabase
 const updateProfile = async () => {
+  // Obtener los datos actualizados del perfil del usuario
   const updatedProfileData = {
     full_name: profile.value.full_name,
     bio: profile.value.bio,
     location: profile.value.location,
     website: profile.value.website,
   };
-  console.log(updatedProfileData);
+
+  // Realizar la actualización en la tabla 'profiles' de Supabase
   const { data, error } = await supabase
     .from("profiles")
     .update(updatedProfileData)
     .eq("user_id", supabase.auth.user().id);
+
+  // Alternar la visibilidad de los campos de actualización
   editToggleProfile();
+
   if (error) {
+    // Si hay un error, mostrarlo en la consola
     console.error(error);
   } else {
+    // Si la actualización es exitosa, emitir un evento para notificar a la instancia padre que el perfil ha sido actualizado
     console.log("Perfil actualizado correctamente");
     emit("updateProfileEmit", updatedProfileData);
   }
 };
 
+// Función que se ejecuta cuando el componente se ha montado
 onMounted(async () => {
+  // Llamar a la función 'fetchUser' de la tienda de usuarios para obtener la información del usuario actualizado
   await userStore.fetchUser();
 });
+
 </script>
 
 <style scoped></style>

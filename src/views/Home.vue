@@ -41,6 +41,7 @@
 </template>
 
 <script setup>
+// Importar las funciones y componentes necesarios desde las librerías y archivos locales
 import { ref, onMounted, computed } from "vue";
 import { useTaskStore } from "../stores/task";
 import NewTask from "../components/NewTask.vue";
@@ -49,24 +50,33 @@ import FooterBar from "../components/Footer.vue";
 import TaskItem from "../components/TaskItem.vue";
 import { format } from "date-fns";
 
+// Obtener la instancia de la tienda de tareas usando el hook useTaskStore
 const taskStore = useTaskStore();
-const isLoading = ref(true);
-const hidden = ref(false);
-const tasks = computed(() => taskStore.tasksArr);
-const fechaFormateada = ref("");
 
+// Variables reactivas para almacenar el estado de la vista
+const isLoading = ref(true); // Para indicar si se está cargando información
+const hidden = ref(false);   // Para controlar la visibilidad de ciertos elementos
+const tasks = computed(() => taskStore.tasksArr); // Para obtener las tareas de la tienda
+const fechaFormateada = ref(""); // Para almacenar la fecha actual formateada
+
+// Acción que se ejecuta una vez que el componente ha sido montado en el DOM
 onMounted(async () => {
+  // Obtener las tareas desde la tienda de tareas
   await taskStore.fetchTasks();
+
   // Obtener la fecha actual
   const fecha = new Date();
+
   // Formatear la fecha en el formato deseado (por ejemplo, "8th July 2023")
   const formatoFecha = format(fecha, "do MMMM yyyy");
+
   // Asignar la fecha formateada a la variable fechaFormateada
   fechaFormateada.value = formatoFecha;
 
+  // Simular una carga de 2 segundos antes de mostrar ciertos elementos
   setTimeout(() => {
-    isLoading.value = false;
-    hidden.value = true;
+    isLoading.value = false; // Indicar que la carga ha finalizado
+    hidden.value = true;    // Ocultar ciertos elementos
   }, 2000);
 });
 </script>

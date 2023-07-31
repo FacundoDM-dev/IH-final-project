@@ -40,19 +40,27 @@
 </template>
 
 <script setup>
+// Importar SweetAlert2 para mostrar alertas y el hook 'ref' de Vue 3 para crear variables reactivas
 import Swal from "sweetalert2";
-import { ref } from "vue";
+import { ref, defineProps } from "vue";
 import { useTaskStore } from "../stores/task";
 
+// Obtener la instancia de la tienda de tareas usando el hook useTaskStore
 const taskStore = useTaskStore();
+
+// Variables reactivas para manejar el nombre y descripción de la tarea y la visibilidad de los campos de actualización
 const name = ref("");
 const description = ref("");
+const inputUpdate = ref(false);
+
+// Props que se reciben de la instancia padre (este componente es un subcomponente)
 const props = defineProps({
-  task: Object,
+  task: Object, // Objeto de la tarea que se muestra en este componente
 });
 
-// Función para borrar la tarea a través de la store.
+// Función para borrar la tarea utilizando SweetAlert2
 const deleteTask = async () => {
+  // Configurar la apariencia de los botones de confirmación y cancelación
   const swalWithBootstrapButtons = Swal.mixin({
     customClass: {
       confirmButton: "btn btn-success",
@@ -61,6 +69,7 @@ const deleteTask = async () => {
     buttonsStyling: false,
   });
 
+  // Mostrar una alerta de confirmación antes de borrar la tarea
   swalWithBootstrapButtons
     .fire({
       title: "Are you sure?",
@@ -73,17 +82,17 @@ const deleteTask = async () => {
     })
     .then((result) => {
       if (result.isConfirmed) {
+        // Si se confirma la eliminación, llamar a la función deleteTask de la tienda de tareas
         taskStore.deleteTask(props.task.id);
 
+        // Mostrar una alerta de éxito después de borrar la tarea
         swalWithBootstrapButtons.fire(
           "Deleted!",
           "Your task has been deleted.",
           "success"
         );
-      } else if (
-        /* Read more about handling dismissals below */
-        result.dismiss === Swal.DismissReason.cancel
-      ) {
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        // Si se cancela la eliminación, mostrar una alerta de cancelación
         swalWithBootstrapButtons.fire(
           "Cancelled",
           "Your task is safe :)",
@@ -93,30 +102,36 @@ const deleteTask = async () => {
     });
 };
 
-// variable inputUpdate la utilizo en false para luego utilizarla en el dom para mantener ocultos los inputs para hacer un update
-const inputUpdate = ref(false);
-
-// funcion basica para hacer un toggle a traves de un boton @click para cambiar la variable inputUpdate de false a true y con esto dejar ver en el DOM dichos inputs y el boton para hacerel update
+// Función para cambiar la visibilidad de los campos de actualización
 const updateToggle = () => {
   inputUpdate.value = !inputUpdate.value;
 };
 
-// funcion que llama a funcion de la store task.js que se encarga de hacer una actualizacion de los datos de la tarea.
+// Función para actualizar la tarea utilizando la función updateTask de la tienda de tareas
 const updateTask = () => {
+  // Obtener los valores de nombre y descripción, si no están definidos, mantener los valores actuales de la tarea
   const titleParam = name.value ? name.value : props.task.title;
   const descriptionParam = description.value
     ? description.value
     : props.task.description;
+
+  // Llamar a la función updateTask de la tienda de tareas para realizar la actualización
   taskStore.updateTask(props.task.id, titleParam, descriptionParam);
+
+  // Limpiar los campos de nombre y descripción después de la actualización
   name.value = "";
   description.value = "";
+
+  // Cambiar la visibilidad de los campos de actualización a su estado original (ocultos)
   updateToggle();
 };
 
+// Función para cambiar el estado de completitud de la tarea utilizando la función completeTask de la tienda de tareas
 const toggleComplete = () => {
   props.task.is_complete = !props.task.is_complete;
   taskStore.completeTask(props.task.id, props.task.is_complete);
 };
+
 </script>
 
 <style></style>

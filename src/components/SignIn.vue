@@ -55,6 +55,8 @@
       </div>
     </div>
   </div>
+
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, deserunt! Eaque, reiciendis. Iure laborum eum aspernatur corrupti non veritatis vel, pariatur facilis doloribus eius animi saepe possimus sit fuga doloremque.</p>
 </template>
 
 <script setup>

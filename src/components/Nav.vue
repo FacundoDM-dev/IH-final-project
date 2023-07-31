@@ -42,26 +42,38 @@
 </template>
 
 <script setup>
+// Importar la tienda 'useUserStore' para interactuar con los datos del usuario
 import { useUserStore } from "../stores/user";
+
+// Importar el hook 'useRouter' de Vue Router para manejar las rutas
 import { useRouter } from "vue-router";
 
-
+// Obtener el usuario actual desde la tienda 'useUserStore'
 const getUser = useUserStore().user;
+
+// Obtener el correo electrónico del usuario
 const userEmail = getUser.email;
+
+// Obtener el nombre de usuario a partir del correo electrónico (antes del símbolo @)
 const userName = userEmail.split("@")[0];
+
+// Obtener la instancia de Vue Router para manejar la redirección
 const redirect = useRouter();
 
-// Función asíncrona que llama al método signOut desde useUserStore y empuja al usuario de vuelta a la vista Auth.
+// Función asíncrona para cerrar sesión del usuario
 const signOut = async () => {
   try {
-    // llama al useUserStore y envia la informacion del usuario al backend para cerrar sesion
+    // Llamar a la función 'signOut' de la tienda de usuarios para cerrar sesión
     await useUserStore().signOut();
-    // y despues te redirige a la vista del inicio de sesion
+
+    // Redirigir al usuario a la vista de inicio de sesión (Auth)
     redirect.push({ path: "/auth/login" });
   } catch (error) {
+    // En caso de error, mostrarlo en la consola
     console.log(error);
   }
 };
+
 </script>
 
 <style></style>
